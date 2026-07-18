@@ -1,0 +1,184 @@
+
+> mallpay-whatsapp-bot@0.1.0 dev
+> tsx src/index.ts
+
+Polling mallpay_whatsapp_outbox every 5000ms.
+
+Scan this QR code with WhatsApp (Linked Devices -> Link a device):
+
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █▀    ██▀██ ▄▀██▄▄▄█ ▀▀▄█▄▀█ █▀▀▀█▄ █ ▄▄ ██ ▄▄▄▄▄ █
+█ █   █ █▀█▀▀▄▀█▄▄▀▀▄▄█▄▀ ▀█▄█  ▄▄▄ ▀ ▀██▄ ▀▀█ ▄ ██ █   █ █
+█ █▄▄▄█ █▀█▄▄▀▀█▄█ ▀▄  ▄▀ █ ▄▄▄ ▀█▀███ █▀█   ▄▀▀▄██ █▄▄▄█ █
+█▄▄▄▄▄▄▄█▄█▄▀▄█▄▀▄▀ ▀ ▀ █ █ █▄█ ▀▄█ ▀▄█ ▀ █ █ ▀ ▀▄█▄▄▄▄▄▄▄█
+█   ▄▄▀▄▄ ▀▀▀▀ ██▄ ▄▄▄▀▀▀▀▄▄ ▄  ▀█▀█▀ ▀██▀  ▄█▄█  ▄█ █▄▀ ▀█
+█ █▀▄ ▄▄ ▄██▀█▄   ▀ ▀▀▀ ▄  ██  █▀█▄██▄▄ ▄▀█▀█▄▄ ▀▀ ▄▄▄▀▀█▀█
+█▀▀▀ ▀▄▄ ▄▀█  ▄▄██▀  █▀▄   █▀█▀█▄█▀▄ ▄ █▀█▀▀ █▄█▀  █▀▀█ █▄█
+█▄▄█▄ ▀▄█▄██  ▀▄▄▀ ▀▄ ▄▄  █▄▀██  ▀█ █▀▄▄    ▄▄██ ▄█▄▄▀▄▀▄██
+█▄█▄ ▀█▄█ ▄█▄ ▄█▄█ ▄▀▄██    ▀  ▀ █▀█   ▄██ ▀ █ ▄▄▀▀█ █▄█▀ █
+█ ▀█ █▀▄█▀▄ ▀▀▀█▄█▄▄▀▄▄██▄ ██ ▀ █▄▀ ▀▄▄ ▄▀ ▀ ▀█ █▄██ █  █▀█
+██▄ ▄█ ▄▄▀▀▄▄ ▀█▄▀▀▄▄█▄▀▀▄▀▀██▀▀▄▀ ▄▄▄▄█▀▀▀ ▀▀▄█▄▀█▄█▀█  ▀█
+█▀▀███▀▄ █  ▄█▀ ▄  ▄▄█▀▀▀█▀  ▀▄ █▄▄ ▄ ▄▄  ▄█▀▀▄▀▄▄█▄▀█▀ ▀██
+█ ▀▄ ▀▀▄▄█ ▄ ▄██▄▄▄ █▄██▄▀▀█▀█▀▀▄ ▄   █▄▀█ ▀██▄▄   ▄▀▀▄ ▄ █
+█▄ ▄▄ ▄▄▄ ▀█▀▀████▄█ ▀▄██▀▀ ▄▄▄  ▄▄██▀▄ ▀█▄▄▄  ▀▄ ▄▄▄ ▀  ▀█
+█▄▀█▀ █▄█ ▀▀ ▄█▀▄▄▄▀▀█▄█  ▀ █▄█  █▄▄▄ ▀█▀▀▀ ▄█▄█▀ █▄█ ▀▀ ▀█
+█▀▀ █▄▄▄▄   █ ▀█ ▄██▀▀   ██   ▄▄▄██   █▀▄ ▄ ▄▀▄██▄▄  ▄▀ ▄▀█
+█▀  ▄▀▄▄▀▄▄▀██▀███▄ ▀█▀█▀▀▄██▄▀ ▄▀▀█  ▀▄▄█▄▀ █▄▄▀█▀ ▄▄▀▀▄▀█
+█ ▄█   ▄▀▀▄▀   ▀▀ ▀▀▄▀█▀▄▀  █▄▀ ▄█▄ █▀ █▀▀▄▀█▀█▀ █▄█ ▀▀▀▄██
+█ ███ ▀▄▄█▀█▄▀▀█▀█▄▄▀▀██▄ █▀▀█  ▄▀█▄ ▄█▄██ ▀▄▀ █▀  ███▄ █ █
+███▄▄▀▄▄█  ▄▀▀ ▄▀█▀▀▀ ▄▀▄ ▄▄▀█ ▄▀█▀▄█ █ █▀▄ █▀█▄██▄█▄██ ▄▄█
+██▀ ▀█ ▄█▀███▀█ ██ ▄▄▄██▀ █▀▀▄█ ▀█▀█▄ ▀██▀ ▀▄▀▄██ ▀ ██ ▀█▀█
+█▀▄█▀█ ▄▄▀█ █▄█▀▀▄▀ █▀▀ ▀▀▀▀▄█ ▄▀█▀█ ▄ ▀▄ ▄▀ ▀  ▀▄ ▀▀█▀▀ ▀█
+█  ▄█  ▄▄█▀ █ █ ▄█▀ ▀█▀▄▀ █▀▀▄▄ ▄█▄█▄▄ ▄█▀ ▀ ▀▄▄█▀▄█▄██▄▀ █
+█ ▀ ▀▀▄▄█▄ ██▄ █▄█ ▀▄▀▀▄▄▄▄▄▀▄▄ ▄██▀▀▄▄█▀▄▀ █▀▄▄█▄ █▀▀  ▀██
+███████▄█▀  █ ▀  ▄▄  █▄▀▀▀  ▄▄▄  █▄█▄  ▄█▀█▀ █ █▀ ▄▄▄ ▄▄▀▀█
+█ ▄▄▄▄▄ █▄ ▄█▀▄█▄▀ ▄▄▀▀██▄█ █▄█ █▄█▄▄▀█ ▀█▄▀ ▀▀ █ █▄█    ▀█
+█ █   █ █ ▀███▀▄▄▀▄▄▄███▀▄▄▄   ▄▄▀█▄ ▄ ▄▀▀ ▀█▀██ ▄  ▄ █ ▄██
+█ █▄▄▄█ █ ▀ ▄▀▄▄▄ ▄▄▄█ ▀▀█▀▄█▀▀█▄█▄▀█▄▄▀▀▀██ ▀█▀ ▄▄▄▀▀ ▀███
+█▄▄▄▄▄▄▄█▄█████▄██▄▄▄▄▄██▄▄█▄██▄▄▄▄▄▄▄█▄██▄▄███▄██▄▄██▄█▄██
+
+
+Scan this QR code with WhatsApp (Linked Devices -> Link a device):
+
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █▀    ▄▄█▀█  ▀▄▄ ▄▄█ ▀▀▄█▄▀▀ ▀ █ ▀  █▄▄▄ ██ ▄▄▄▄▄ █
+█ █   █ █▀█▀█▄▀█▄█▀▀▄██▄ ▀▀█▄█  ▀█▄ ▀▀▀█▀▄ ▀▀█ ▄ ██ █   █ █
+█ █▄▄▄█ █▀█▄▀▄▀█▄█ ▀▄  ▄▀ █ ▄▄▄ █▀▀█▀  █▀▀   █▀▀▄██ █▄▄▄█ █
+█▄▄▄▄▄▄▄█▄▀▄█▄█▄▀▄▀ ▀ ▀ █ █ █▄█ ▀▄█ ▀▄█ ▀ █ █ ▀ ▀▄█▄▄▄▄▄▄▄█
+█   ▄ ▀▄  ██▀▀ ██▄ ▄▄▄▀▀▀▀▄  ▄  ▀█▀█▀ ▀██▀  ▄█▄█▀  █▄█▄▀ ▀█
+█ █▀▄ ▄▄▀▄▄▄▄█▄   ▀ ▀▀▀ ▄ ▀██▄ █▀█ ▀█▄▄ ▄▀▀▀█▄▄▄█▀▀▄█▀▀▀█▀█
+█▀▀██▀▄▄▀██   ▄▄██▀  █▀▄   █▀█▀█▄██▄ ▄▀█▀██  █▄▄▀  ████▄█▄█
+██▀▄▀ ▀▄▄███  ▀▄▄▀▄▄▄ █▀  █▄▀██▄ ▀ ▀████ ▄▄▀  █▄ ██▄█▀ ▀▄██
+█▀  ▄▀█▄█ ▄█▄ ▄██▄▀▄▀█▀█▀▀  ▀ ▀  █▀▄  ▀█▀▀▄ ▀▀▄▄▄▀▀█ ████ █
+█▄█▀▄▀▀▄█▀▄ ▀▀▀█▄ ▄▄▀█▄█▄  ██  ▀▀ ▀ ██▄ ▄  ▀▀▀▄▀█▄▀█ █  ▄██
+█ █ ▄█▀▄▄▀▀▄█ ▀█▄▀▀▄▄█▄▀▀▄▀▀██▀▀▄█ ▄  ▄█ ▀▀  ▀▄█▄▀ ██▀█ ▀▀█
+█▀▀███▀▄▄▀▄▀▀ █▄▄  ▄▄█▀▀▀█▀  ▀▄ ▄█▄ █ ▄▄  ▄█ ▀▄▀▄▄▀▄▀▀▀ ▀██
+█ ▀▄   ▄█▄▀▀▀ ▀▄▄▄▄ █▄██▄▀▀█▀█▀▀▄ ▄   █▄▀█ ▀██▄▄ ▀▀█▀▀▄ ▄ █
+█▄ ▄▄ ▄▄▄ ▀▄ ▀ ▄██▄█ ▀▄██▀█ ▄▄▄  ▄▄██▀ ▄▀█▄ ▄  █▀ ▄▄▄ ▀  ▀█
+█▄▀█  █▄█ ▄  ▄▄ ▄▄▄▀▀█▄█  ▀ █▄█  █▄▄▄  █▀▀▀▀▄█▀██ █▄█ █▀ ▀█
+█ ▄▄▀▄▄▄ ▄  █ ▀█ ▄▄ ▀▀▄▄ ██▄  ▄▄▄█▄  ▄█▀▄▄█ ▄█▄▄▀▄▄  ▄▄▀▄▀█
+██▄▄ ▀▄▄▀▀▄▀██▀█▄▄▀▄ █▀▀▄▀▄███▀ ▄▀▀█▀ ██▀█▄▀▄▀▄▄█ ▀ ██ ▀ ▀█
+██ ▄█  ▄█▄▄▀   ▀▀▄▀▀ ▄█▀ █  ▀▀▀  ▀▄ ▄█▀▄█▀█▀ ▀█▀▀█▄█  ▀▀███
+█████ ▀▄▄█▀█ ▄▀█▀█▄▄▀▀██▄ █▀▀█▀▄ ▀█▄  █▄██ ▀▀█ █▀  ███▄ █▀█
+███▄▄▀▄▄█  ▄  ▀█▀█▀▀▀ ▄▀▄ ▄▄▀█▀▄ █▀▄█ █ █ ▄ ▄ █▄██▄█▄██ ▄▄█
+██▀ ▀▄ ▄█▀ █ ▀▄ ██ ▄▄▄██▀ █▀▀▄█ ▀█▀█▄ ▀██▀ ▀▄▀▄██  ▄██ ▀█▀█
+█▀▄█▀▄█▄▄▀██▄▄  ▀▄▀ █▀▀ ▀▀▀▀▄█ ▄▀███ ▄▄▀▄  █ ▀  █▄ █▀█   ▀█
+█  ▄██▀▄▀▄▄██  █▄█▀ ▀█▀▄▀ ██▀▄▄ ▄█ ▄▄▄▀▄█▀ ▀ ▀█▄▀█▀███▀▀▀ █
+█ ▀ ▀▀▄▄▄▀ ██▄ █▄█ ▄▄▀█▄▄▄▄▀▀▄▄ ▄██ █ ▄▀█▄█▄▀▀ █ ██▀▀▄ ▀▀██
+███████▄▄   █ ▀ ▄██▄ ▄▀▀█▀  ▄▄▄  █▄█▄▄ ▄█▀ ▀ ▀██▀ ▄▄▄ ▄▄▀▀█
+█ ▄▄▄▄▄ █▄ ▄█▀▄█▀  ▄▀▄▀█  █ █▄█ ▀▄█▄█▄█ ▀▀▄ ▄█  █ █▄█   ▀██
+█ █   █ █ ▀█▄█▀▄▄▀▄▄▄███▀▄▄▄▄  ▄▄██▄▄  ▄█▀ ▀▄▀██▀▄  ▄▄█ ▄██
+█ █▄▄▄█ █  █▄▀█▀▄ ▄▄▄█ ▀▀█▀▄▀▀▀██▄▄▀██▄▀  ██  █▀ ▄▄▄▀█ ▀███
+█▄▄▄▄▄▄▄█▄▄██▄████▄▄▄▄▄██▄▄█▄██▄▄▄▄▄▄▄█▄██▄▄███▄██▄▄█▄▄█▄██
+
+{"level":50,"time":1784117874875,"pid":4524,"hostname":"Adil-PC","node":{"tag":"stream:error","attrs":{"code":"515"}},"msg":"stream errored out"}
+WhatsApp connection closed (statusCode=515, reason="Stream Errored (restart required)")
+Reconnecting in 2000ms (attempt 1/5)...
+{"level":40,"time":1784117879705,"pid":4524,"hostname":"Adil-PC","msg":"no name present, ignoring presence update request..."}
+WhatsApp connected.
+Sent outbox #1 to +923343856244
+Sent outbox #2 to +923343856244
+{"level":50,"time":1784117888089,"pid":4524,"hostname":"Adil-PC","error":{},"node":{"tag":"message","attrs":{"from":"923003573169@s.whatsapp.net","type":"text","id":"ACE8AF1E35A62EE77F551BA3E5BB4279","category":"peer","t":"1784117887"},"content":[{"tag":"meta","attrs":{"appdata":"default"}},{"tag":"enc","attrs":{"v":"2","type":"msg"},"content":{"type":"Buffer","data":[51,10,33,5,57,187,173,80,16,130,213,177,167,213,167,150,93,51,87,235,28,190,6,222,230,175,140,8,176,153,226,79,246,147,90,78,16,1,24,0,34,112,123,181,216,66,78,109,107,92,246,182,65,229,84,248,167,241,44,145,11,212,134,218,245,138,144,74,159,177,38,20,28,62,63,189,43,66,49,209,96,110,5,178,107,127,107,37,8,246,192,1,80,161,170,212,71,226,196,253,212,66,239,46,228,254,198,84,204,174,168,167,163,117,201,89,108,42,123,31,101,69,207,26,155,107,88,113,203,69,212,150,144,63,230,190,6,178,233,156,246,5,236,26,189,0,200,18,16,64,63,191,113,155,1,103,172,157,5,253,228,121]}}]},"msg":"error in handling message"}
+{"level":50,"time":1784117939712,"pid":4524,"hostname":"Adil-PC","err":{"type":"Error","message":"Timed Out","stack":"Error: Timed Out\n    at <anonymous> (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:175:6)","data":{"stack":"Error\n    at promiseTimeout (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:168:16)\n    at waitForMessage (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:185:25)\n    at query (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:212:39)\n    at fetchProps (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:809:28)\n    at executeInitQueries (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:983:22)\n    at EventEmitter.<anonymous> (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:1096:5)\n    at EventEmitter.emit (node:events:520:35)\n    at EventEmitter.<anonymous> (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:81:7)\n    at EventEmitter.emit (node:events:508:28)\n    at Object.emit (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:140:14)"},"isBoom":true,"isServer":false,"output":{"statusCode":408,"payload":{"statusCode":408,"error":"Request Time-out","message":"Timed Out"},"headers":{}}},"msg":"unexpected error in 'init queries'"}
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #3: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Sent outbox #5 to +923300009926
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Failed outbox #4: Timed Out
+Sent outbox #5 to +923300009926
+Sent outbox #6 to +923300009926
+Sent outbox #7 to +923300009926
+Sent outbox #8 to +923343856244
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Failed outbox #9: Timed Out
+Sent outbox #10 to +923300009926
+Sent outbox #11 to +923343856244
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+Failed outbox #12: Timed Out
+Sent outbox #13 to +923300009926
+{"level":50,"time":1784121418175,"pid":4524,"hostname":"Adil-PC","key":{"remoteJid":"267121430917121:14@lid","fromMe":false,"id":"ACFD237A7E55E95C2E114758509CE7F8","senderPn":"923343856244@s.whatsapp.net"},"err":{"type":"SessionError","message":"No session record","stack":"SessionError: No session record\n    at 267121430917121.14 [as awaitable] (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:169:23)\n    at async _asyncQueueExecutor (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784121424292,"pid":4524,"hostname":"Adil-PC","key":{"remoteJid":"267121430917121:14@lid","fromMe":false,"id":"ACFD237A7E55E95C2E114758509CE7F8","senderPn":"923343856244@s.whatsapp.net"},"err":{"type":"SessionError","message":"No session record","stack":"SessionError: No session record\n    at 267121430917121.14 [as awaitable] (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:169:23)\n    at async _asyncQueueExecutor (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Sent outbox #14 to +923300009926
+Sent outbox #15 to +923343856244
+Sent outbox #16 to +923343856244
+{"level":50,"time":1784128946917,"pid":4524,"hostname":"Adil-PC","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"ACACDD0C6E736B8BBA9D9720891293BF"},"err":{"type":"SessionError","message":"No session record","stack":"SessionError: No session record\n    at 19469187440893.0 [as awaitable] (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:169:23)\n    at async _asyncQueueExecutor (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784128947539,"pid":4524,"hostname":"Adil-PC","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC157198C7C4131192C03B098BDC5E1F"},"err":{"type":"SessionError","message":"No session record","stack":"SessionError: No session record\n    at 19469187440893.0 [as awaitable] (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:169:23)\n    at async _asyncQueueExecutor (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784128952856,"pid":4524,"hostname":"Adil-PC","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"ACACDD0C6E736B8BBA9D9720891293BF"},"err":{"type":"SessionError","message":"No session record","stack":"SessionError: No session record\n    at 19469187440893.0 [as awaitable] (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:169:23)\n    at async _asyncQueueExecutor (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784128956008,"pid":4524,"hostname":"Adil-PC","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC8DC071F86F1A863CB38F9E35E3FD1D"},"err":{"type":"SessionError","message":"No session record","stack":"SessionError: No session record\n    at 19469187440893.0 [as awaitable] (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:169:23)\n    at async _asyncQueueExecutor (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784130321482,"pid":4524,"hostname":"Adil-PC","key":{"remoteJid":"status@broadcast","fromMe":false,"id":"ACB1A024A7511733EDD4950938645F9C","participant":"6386717085858@lid","participantPn":"923352675960@s.whatsapp.net"},"err":{"type":"Error","message":"No session found to decrypt message","stack":"Error: No session found to decrypt message\n    at Object.awaitable (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Signal\\Group\\group_cipher.ts:66:11)\n    at async _asyncQueueExecutor (G:\\Claude\\AKRAM\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Signal\\Group\\queue-job.ts:18:17)"},"msg":"failed to decrypt message"}

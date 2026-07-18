@@ -1,4 +1,4 @@
-import AppHeader from "@/components/AppHeader";
+import AppShell from "@/components/AppShell";
 import { requireAdmin } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { money } from "@/lib/util";
@@ -13,16 +13,20 @@ async function saveShop(formData: FormData) {
   const supabase = await supabaseServer();
   const id = Number(formData.get("id") || 0);
   const fee = Number(formData.get("monthly_fee") || 0);
-  const row = {
+  const row: Record<string, unknown> = {
     shop_number: String(formData.get("shop_number") || "").trim(),
     name: String(formData.get("name") || "").trim(),
-    owner_name: String(formData.get("owner_name") || "").trim() || null,
-    owner_phone: String(formData.get("owner_phone") || "").trim() || null,
     floor_id: Number(formData.get("floor_id")),
     size_sqft: formData.get("size_sqft") ? Number(formData.get("size_sqft")) : null,
     custom_fee: fee,
     active: formData.get("active") === "on",
   };
+  if (!id) {
+    // New shops start with no owner — owner name/phone are only ever set
+    // by linking an owner account from the Owners page.
+    row.owner_name = "No Owner";
+    row.owner_phone = null;
+  }
   if (!row.shop_number || !row.name || !row.floor_id || fee <= 0) {
     redirect(`/shops?${id ? `edit=${id}` : "new=1"}&err=missing`);
   }
@@ -70,9 +74,7 @@ export default async function ShopsPage({
   const v = (k: string) => (editing?.[k] ?? "") as string | number;
 
   return (
-    <>
-      <AppHeader user={user} active="/shops" />
-      <main className="wrap">
+    <AppShell user={user} active="/shops">
         <h1>{showForm ? (editing ? "Edit shop" : "Register shop") : "Shops"}</h1>
         {sp.err === "duplicate" && <div className="flash err">That shop number already exists — use a different one.</div>}
         {sp.err === "missing" && <div className="flash err">Shop number, name, floor, and a monthly fee above zero are required.</div>}
@@ -100,16 +102,13 @@ export default async function ShopsPage({
                 <label>Shop name</label>
                 <input type="text" name="name" defaultValue={v("name")} placeholder="Style Hub Garments" required />
               </div>
-              <div className="frow">
-                <div className="field">
-                  <label>Owner name</label>
-                  <input type="text" name="owner_name" defaultValue={v("owner_name")} />
-                </div>
-                <div className="field">
-                  <label>Owner phone</label>
-                  <input type="text" name="owner_phone" defaultValue={v("owner_phone")} placeholder="0300 1234567" />
-                </div>
-              </div>
+              {editing && (
+                <p className="muted" style={{ fontSize: 13 }}>
+                  Owner: {String(editing.owner_name ?? "No Owner") === "No Owner"
+                    ? "No owner — link one from the Owners page"
+                    : `${editing.owner_name}${editing.owner_phone ? ` · ${editing.owner_phone}` : ""}`}
+                </p>
+              )}
               <div className="frow">
                 <div className="field">
                   <label>Size (sq ft) <span className="muted">(optional)</span></label>
@@ -153,10 +152,13 @@ export default async function ShopsPage({
               ) : (
                 <div className="tablewrap"><table>
                   <thead>
-                    <tr><th>Shop</th><th>Floor</th><th>Owner</th><th className="r">Monthly fee</th><th /></tr>
+                    <tr><th>Shop</th><th>Floor</th><th>Owner</th><th>Status</th><th className="r">Monthly fee</th><th /></tr>
                   </thead>
                   <tbody>
-                    {shops.map(s => (
+                    {shops.map(s => {
+                      const ownerName = String(s.owner_name ?? "").trim();
+                      const occupied = Boolean(ownerName) && ownerName !== "No Owner";
+                      return (
                       <tr key={String(s.id)}>
                         <td>
                           <strong>{String(s.shop_number)}</strong> · {String(s.name)}
@@ -165,23 +167,25 @@ export default async function ShopsPage({
                         </td>
                         <td>{(s.floors as { name: string }).name}</td>
                         <td>
-                          {String(s.owner_name ?? "—") || "—"}
+                          {occupied ? ownerName : "—"}
                           {Boolean(s.owner_phone) && <div className="rowsub">{String(s.owner_phone)}</div>}
+                        </td>
+                        <td>
+                          {occupied ? <span className="badge paid">Active</span> : <span className="badge off">Vacant</span>}
                         </td>
                         <td className="r num">{money(Number(s.custom_fee ?? 0))}</td>
                         <td className="r">
                           <Link className="btn ghost small" href={`/shops?edit=${s.id}`}>Edit</Link>
                         </td>
                       </tr>
-                    ))}
+                      );
+                    })}
                   </tbody>
                 </table></div>
               )}
             </div>
           </>
         )}
-      </main>
-      <footer className="wrap foot muted">MallPay maintenance collection</footer>
-    </>
+    </AppShell>
   );
 }

@@ -1,7 +1,9 @@
-import AppHeader from "@/components/AppHeader";
+import AppShell from "@/components/AppShell";
+import { KpiCard } from "@/components/KpiCard";
 import { requireAdmin } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { money, currentPeriod, periodLabel } from "@/lib/util";
+import { ShopIcon, CheckIcon, MoneyIcon, ClockIcon } from "@/components/icons";
 
 export const dynamic = "force-dynamic";
 
@@ -53,9 +55,7 @@ export default async function ReportPage({
   });
 
   return (
-    <>
-      <AppHeader user={user} active="/report" />
-      <main className="wrap">
+    <AppShell user={user} active="/report">
         <h1>Monthly report</h1>
         <div className="filters" style={{ marginTop: 14 }}>
           <form method="get" className="filters" style={{ margin: 0 }} key={`${period}-${floorId}-${show}`}>
@@ -80,13 +80,16 @@ export default async function ReportPage({
           <a className="btn ghost" style={{ marginLeft: "auto" }} href={`/report/csv?${csvQuery}`}>
             Download CSV
           </a>
+          <a className="btn ghost" href={`/report/pdf?${csvQuery}`}>
+            Download PDF
+          </a>
         </div>
 
         <div className="grid c4">
-          <div className="stat"><div className="l">Shops in view</div><div className="v num">{rows.length}</div></div>
-          <div className="stat"><div className="l">Paid</div><div className="v num">{paidCount}</div></div>
-          <div className="stat"><div className="l">Collected</div><div className="v num good">{money(collected)}</div></div>
-          <div className="stat"><div className="l">Outstanding</div><div className="v num bad">{money(pending)}</div></div>
+          <KpiCard label="Shops in view" value={String(rows.length)} icon={<ShopIcon />} />
+          <KpiCard label="Paid" value={String(paidCount)} icon={<CheckIcon />} />
+          <KpiCard label="Collected" value={money(collected)} icon={<MoneyIcon />} tone="good" />
+          <KpiCard label="Outstanding" value={money(pending)} icon={<ClockIcon />} tone="bad" />
         </div>
 
         <div className="card">
@@ -130,8 +133,6 @@ export default async function ReportPage({
             </table></div>
           )}
         </div>
-      </main>
-      <footer className="wrap foot muted">MallPay maintenance collection</footer>
-    </>
+    </AppShell>
   );
 }

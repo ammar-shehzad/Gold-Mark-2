@@ -1,4 +1,9 @@
-import AppHeader from "@/components/AppHeader";
+import AppShell from "@/components/AppShell";
+import { KpiCard } from "@/components/KpiCard";
+import { WidgetCard } from "@/components/WidgetCard";
+import { DonutChart } from "@/components/charts/DonutChart";
+import { LineChart } from "@/components/charts/LineChart";
+import { ShopIcon, MoneyIcon, ClockIcon, CheckIcon } from "@/components/icons";
 import { requireUser } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { money, currentPeriod, periodLabel } from "@/lib/util";
@@ -13,13 +18,29 @@ type Inv = {
   profiles: { name: string } | null;
 };
 
+function lastPeriods(n: number): string[] {
+  const now = new Date();
+  const out: string[] = [];
+  for (let i = n - 1; i >= 0; i--) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    out.push(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`);
+  }
+  return out;
+}
+
+function shortMonth(p: string): string {
+  const [y, m] = p.split("-").map(Number);
+  return new Date(y, m - 1, 1).toLocaleDateString("en-US", { month: "short" });
+}
+
 export default async function Dashboard({
   searchParams,
 }: {
   searchParams: Promise<{ period?: string }>;
 }) {
   const user = await requireUser();
-  if (user.role === "staff") redirect("/collect");
+  if (user.role === "staff") redirect(user.staff_type === "department" ? "/complaints" : "/collect");
+  if (user.role === "owner") redirect("/owner");
 
   const sp = await searchParams;
   const period = /^\d{4}-\d{2}$/.test(sp.period ?? "") ? sp.period! : currentPeriod();
@@ -29,7 +50,9 @@ export default async function Dashboard({
     await supabase.rpc("ensure_invoices", { p_period: period });
   }
 
-  const [{ data: invoices }, { count: shopCount }, { data: periods }, { data: arrearsRaw }] = await Promise.all([
+  const trendPeriods = lastPeriods(6);
+
+  const [{ data: invoices }, { count: shopCount }, { data: periods }, { data: arrearsRaw }, { data: trendRaw }] = await Promise.all([
     supabase
       .from("invoices")
       .select("amount,status,paid_at,period,shops(shop_number,name,floors(name,sort)),profiles:collected_by(name)")
@@ -41,6 +64,7 @@ export default async function Dashboard({
       .select("amount,period,shops(shop_number,name)")
       .eq("status", "unpaid")
       .lt("period", currentPeriod()),
+    supabase.from("invoices").select("amount,period").in("period", trendPeriods),
   ]);
 
   type Arr = { amount: number; period: string; shops: { shop_number: string; name: string } };
@@ -79,120 +103,145 @@ export default async function Dashboard({
 
   const uniqPeriods = [...new Set([currentPeriod(), ...(periods ?? []).map(p => p.period)])].sort().reverse();
 
+  const trendMap = new Map<string, number>(trendPeriods.map(p => [p, 0]));
+  for (const t of (trendRaw ?? []) as { amount: number; period: string }[]) {
+    trendMap.set(t.period, (trendMap.get(t.period) ?? 0) + Number(t.amount));
+  }
+  const trendPoints = trendPeriods.map(p => ({ label: shortMonth(p), value: trendMap.get(p) ?? 0 }));
+
   return (
-    <>
-      <AppHeader user={user} active="/" />
-      <main className="wrap">
-        <h1>Dashboard</h1>
-        <div className="filters">
-          <form method="get" className="filters" style={{ margin: 0 }} key={period}>
-            <select name="period" defaultValue={period}>
-              {uniqPeriods.map(p => (
-                <option key={p} value={p}>{periodLabel(p)}</option>
-              ))}
-            </select>
-            <button className="btn ghost" type="submit">View</button>
-          </form>
-          <Link className="btn ghost" href="/shops?new=1" style={{ marginLeft: "auto" }}>
-            + Register shop
-          </Link>
-        </div>
+    <AppShell user={user} active="/">
+      <div className="filters">
+        <form method="get" className="filters" style={{ margin: 0 }} key={period}>
+          <select name="period" defaultValue={period}>
+            {uniqPeriods.map(p => (
+              <option key={p} value={p}>{periodLabel(p)}</option>
+            ))}
+          </select>
+          <button className="btn ghost" type="submit">View</button>
+        </form>
+        <Link className="btn ghost" href="/shops?new=1" style={{ marginLeft: "auto" }}>
+          + Register shop
+        </Link>
+      </div>
 
-        {(shopCount ?? 0) === 0 && (
-          <div className="card">
-            <h2>Welcome — let&apos;s set up your mall</h2>
-            <p className="muted">
-              Check your floors and fee tiers in <Link href="/setup">Setup</Link>, then{" "}
-              <Link href="/shops?new=1">register your first shop</Link>. Monthly invoices are created automatically.
-            </p>
-          </div>
-        )}
-
-        <div className="grid c4">
-          <div className="stat"><div className="l">Active shops</div><div className="v num">{shopCount ?? 0}</div></div>
-          <div className="stat"><div className="l">Collected · {periodLabel(period)}</div><div className="v num good">{money(collected)}</div></div>
-          <div className="stat"><div className="l">Pending</div><div className="v num bad">{money(pending)}</div></div>
-          <div className="stat"><div className="l">Shops paid</div><div className="v num">{paidCount} / {rows.length}</div></div>
-        </div>
-
+      {(shopCount ?? 0) === 0 && (
         <div className="card">
-          <h2>Collection progress — {periodLabel(period)}</h2>
-          <div className="meter"><i style={{ width: `${pct}%` }} /></div>
-          <div className="meter-cap">
-            <span>{pct}% collected</span>
-            <span className="num">{money(collected)} of {money(grand)}</span>
-          </div>
+          <h2>Welcome — let&apos;s set up your mall</h2>
+          <p className="muted">
+            Check your floors and fee tiers in <Link href="/setup">Setup</Link>, then{" "}
+            <Link href="/shops?new=1">register your first shop</Link>. Monthly invoices are created automatically.
+          </p>
         </div>
+      )}
 
-        {defaulters.length > 0 && (
-          <div className="card">
-            <h2 style={{ color: "var(--danger)" }}>Arrears — old months pending · {money(arrearsTotal)}</h2>
+      <div className="grid c4">
+        <KpiCard label="Active shops" value={String(shopCount ?? 0)} icon={<ShopIcon />} />
+        <KpiCard label={`Collected · ${periodLabel(period)}`} value={money(collected)} icon={<MoneyIcon />} tone="hero" />
+        <KpiCard label="Pending" value={money(pending)} icon={<ClockIcon />} tone="bad" />
+        <KpiCard label="Shops paid" value={`${paidCount} / ${rows.length}`} icon={<CheckIcon />} />
+      </div>
+
+      <div className="grid c2">
+        <WidgetCard title={`Collection overview · ${periodLabel(period)}`}>
+          <div className="donut-row">
+            <DonutChart
+              centerValue={`${pct}%`}
+              centerLabel="Collected"
+              segments={[
+                { label: "Collected", value: collected, color: "var(--success)" },
+                { label: "Pending", value: pending, color: "var(--warning)" },
+                { label: "Arrears (past months)", value: arrearsTotal, color: "var(--danger)" },
+              ]}
+            />
+            <div className="donut-legend">
+              <div className="donut-legend-item">
+                <span className="donut-legend-dot" style={{ background: "var(--success)" }} />
+                Collected <span className="num" style={{ marginLeft: "auto" }}>{money(collected)}</span>
+              </div>
+              <div className="donut-legend-item">
+                <span className="donut-legend-dot" style={{ background: "var(--warning)" }} />
+                Pending <span className="num" style={{ marginLeft: "auto" }}>{money(pending)}</span>
+              </div>
+              {arrearsTotal > 0 && (
+                <div className="donut-legend-item">
+                  <span className="donut-legend-dot" style={{ background: "var(--danger)" }} />
+                  Arrears <span className="num" style={{ marginLeft: "auto" }}>{money(arrearsTotal)}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </WidgetCard>
+        <WidgetCard title="Monthly collection trend">
+          <LineChart points={trendPoints} />
+        </WidgetCard>
+      </div>
+
+      {defaulters.length > 0 && (
+        <div className="card">
+          <h2 style={{ color: "var(--danger)" }}>Arrears — old months pending · {money(arrearsTotal)}</h2>
+          <div className="tablewrap"><table>
+            <thead><tr><th>Shop</th><th className="r">Months</th><th className="r">Total due</th></tr></thead>
+            <tbody>
+              {defaulters.slice(0, 8).map(([no, d]) => (
+                <tr key={no}>
+                  <td><strong>{no}</strong> · {d.name}</td>
+                  <td className="r num">{d.months}</td>
+                  <td className="r num" style={{ color: "var(--danger)", fontWeight: 600 }}>{money(d.total)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table></div>
+          {defaulters.length > 8 && (
+            <p className="muted" style={{ fontSize: 13, marginBottom: 0 }}>
+              and {defaulters.length - 8} more — see Collect page for the full list.
+            </p>
+          )}
+        </div>
+      )}
+
+      <div className="grid c2">
+        <WidgetCard title="By floor">
+          {floors.length === 0 ? (
+            <p className="muted">No invoices for this month yet.</p>
+          ) : (
             <div className="tablewrap"><table>
-              <thead><tr><th>Shop</th><th className="r">Months</th><th className="r">Total due</th></tr></thead>
+              <thead><tr><th>Floor</th><th className="r">Paid</th><th className="r">Amount due</th></tr></thead>
               <tbody>
-                {defaulters.slice(0, 8).map(([no, d]) => (
-                  <tr key={no}>
-                    <td><strong>{no}</strong> · {d.name}</td>
-                    <td className="r num">{d.months}</td>
-                    <td className="r num" style={{ color: "var(--danger)", fontWeight: 600 }}>{money(d.total)}</td>
+                {floors.map(([name, f]) => (
+                  <tr key={name}>
+                    <td>{name}</td>
+                    <td className="r num">{f.paid} / {f.total}</td>
+                    <td className="r num">{money(f.due)}</td>
                   </tr>
                 ))}
               </tbody>
             </table></div>
-            {defaulters.length > 8 && (
-              <p className="muted" style={{ fontSize: 13, marginBottom: 0 }}>
-                and {defaulters.length - 8} more — see Collect page for the full list.
-              </p>
-            )}
-          </div>
-        )}
-
-        <div className="grid c2">
-          <div className="card" style={{ margin: 0 }}>
-            <h2>By floor</h2>
-            {floors.length === 0 ? (
-              <p className="muted">No invoices for this month yet.</p>
-            ) : (
-              <div className="tablewrap"><table>
-                <thead><tr><th>Floor</th><th className="r">Paid</th><th className="r">Amount due</th></tr></thead>
-                <tbody>
-                  {floors.map(([name, f]) => (
-                    <tr key={name}>
-                      <td>{name}</td>
-                      <td className="r num">{f.paid} / {f.total}</td>
-                      <td className="r num">{money(f.due)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table></div>
-            )}
-          </div>
-          <div className="card" style={{ margin: 0 }}>
-            <h2>Recent collections</h2>
-            {recent.length === 0 ? (
-              <p className="muted">No payments recorded yet this month.</p>
-            ) : (
-              <div className="tablewrap"><table>
-                <tbody>
-                  {recent.map((r, i) => (
-                    <tr key={i}>
-                      <td>
-                        {r.shops.shop_number} · {r.shops.name}
-                        <div className="rowsub">
-                          by {r.profiles?.name ?? "—"} ·{" "}
-                          {new Date(r.paid_at!).toLocaleDateString("en-US", { day: "numeric", month: "short" })}
-                        </div>
-                      </td>
-                      <td className="r"><span className="badge paid num">{money(r.amount)}</span></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table></div>
-            )}
-          </div>
-        </div>
-      </main>
-      <footer className="wrap foot muted">MallPay maintenance collection</footer>
-    </>
+          )}
+        </WidgetCard>
+        <WidgetCard title="Recent collections">
+          {recent.length === 0 ? (
+            <p className="muted">No payments recorded yet this month.</p>
+          ) : (
+            <div className="tablewrap"><table>
+              <tbody>
+                {recent.map((r, i) => (
+                  <tr key={i}>
+                    <td>
+                      {r.shops.shop_number} · {r.shops.name}
+                      <div className="rowsub">
+                        by {r.profiles?.name ?? "—"} ·{" "}
+                        {new Date(r.paid_at!).toLocaleDateString("en-US", { day: "numeric", month: "short" })}
+                      </div>
+                    </td>
+                    <td className="r"><span className="badge paid num">{money(r.amount)}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table></div>
+          )}
+        </WidgetCard>
+      </div>
+    </AppShell>
   );
 }

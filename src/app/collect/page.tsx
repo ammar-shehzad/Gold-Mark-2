@@ -1,26 +1,69 @@
-import AppHeader from "@/components/AppHeader";
-import { requireUser } from "@/lib/auth";
+import AppShell from "@/components/AppShell";
+import { requireStaff } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { money, currentPeriod, periodLabel } from "@/lib/util";
+import { cancelPendingReminders } from "@/lib/reminders";
+import { renderTemplate } from "@/lib/template";
 import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
 async function markPaid(formData: FormData) {
   "use server";
-  const user = await requireUser();
+  const user = await requireStaff();
   const supabase = await supabaseServer();
+  const invoiceId = Number(formData.get("invoice_id"));
+
+  const { data: invoice } = await supabase
+    .from("invoices")
+    .select("period,amount,shop_id,shops(shop_number)")
+    .eq("id", invoiceId)
+    .single();
+
   await supabase
     .from("invoices")
     .update({ status: "paid", paid_at: new Date().toISOString(), collected_by: user.id })
-    .eq("id", Number(formData.get("invoice_id")))
+    .eq("id", invoiceId)
     .eq("status", "unpaid");
+  await cancelPendingReminders(invoiceId);
+
+  if (invoice) {
+    const { data: links } = await supabase.from("mallpay_shop_owners").select("owner_id").eq("shop_id", invoice.shop_id);
+    const ownerIds = (links ?? []).map((l) => l.owner_id);
+    if (ownerIds.length > 0) {
+      const { data: owners } = await supabase
+        .from("profiles")
+        .select("whatsapp_number")
+        .in("id", ownerIds)
+        .eq("notify_whatsapp", true)
+        .not("whatsapp_number", "is", null);
+      const recipients = (owners ?? []).filter((o) => o.whatsapp_number);
+      if (recipients.length > 0) {
+        const shop = invoice.shops as unknown as { shop_number: string };
+        const { data: tmpl } = await supabase.from("mallpay_whatsapp_templates").select("body").eq("key", "payment_approved").single();
+        const message = renderTemplate(
+          tmpl?.body ?? "Your payment has been received and verified successfully. Shop {{shop_number}}, {{period_label}}, {{amount}}. Thank you.",
+          { shop_number: shop.shop_number, period_label: periodLabel(invoice.period), amount: money(invoice.amount) }
+        );
+        await supabase.from("mallpay_whatsapp_outbox").insert(
+          recipients.map((o) => ({
+            to_number: o.whatsapp_number as string,
+            message,
+            kind: "payment_approved" as const,
+            related_table: "invoices",
+            related_id: invoiceId,
+          }))
+        );
+      }
+    }
+  }
+
   redirect("/collect?ok=1");
 }
 
 async function undoPaid(formData: FormData) {
   "use server";
-  const user = await requireUser();
+  const user = await requireStaff();
   if (user.role !== "admin") redirect("/collect");
   const supabase = await supabaseServer();
   await supabase
@@ -41,7 +84,8 @@ export default async function CollectPage({
 }: {
   searchParams: Promise<{ floor?: string; show?: string; q?: string; ok?: string }>;
 }) {
-  const user = await requireUser();
+  const user = await requireStaff();
+  if (user.role === "staff" && user.staff_type === "department") redirect("/complaints");
   const sp = await searchParams;
   const period = currentPeriod();
   const supabase = await supabaseServer();
@@ -82,9 +126,7 @@ export default async function CollectPage({
   const groups = [...byShop.entries()].sort((a, b) => a[0].localeCompare(b[0]));
 
   return (
-    <>
-      <AppHeader user={user} active="/collect" />
-      <main className="wrap">
+    <AppShell user={user} active="/collect">
         <h1>Collect — {periodLabel(period)}</h1>
         {sp.ok === "1" && <div className="flash ok">Payment recorded.</div>}
         {sp.ok === "2" && <div className="flash ok">Payment reverted to unpaid.</div>}
@@ -177,8 +219,6 @@ export default async function CollectPage({
             You&apos;re on a collector account — record payments here, including old pending months. Totals and reports are visible to the administrator.
           </p>
         )}
-      </main>
-      <footer className="wrap foot muted">MallPay maintenance collection</footer>
-    </>
+    </AppShell>
   );
 }

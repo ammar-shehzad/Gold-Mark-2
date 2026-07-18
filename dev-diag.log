@@ -1,0 +1,60 @@
+
+> gold-mark-2@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.10 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.190.243.198:3000
+- Environments: .env.local
+✓ Ready in 1682ms
+○ Compiling proxy ...
+
+○ Compiling /login ...
+ GET /login 200 in 30.4s (next.js: 24.1s, proxy.ts: 602ms, application-code: 5.8s)
+ GET /api/google/oauth/start 307 in 31.3s (next.js: 28.5s, proxy.ts: 1413ms, application-code: 1406ms)
+✓ Finished writing to filesystem cache in 15.4s
+○ Compiling /google-sheets ...
+✓ Finished writing to filesystem cache in 32.2s
+ GET /google-sheets 200 in 78s (next.js: 72s, proxy.ts: 350ms, application-code: 5.1s)
+ GET /google-sheets 200 in 5.2s (next.js: 1796ms, proxy.ts: 1349ms, application-code: 2.0s)
+○ Compiling /manifest.webmanifest ...
+ GET /api/google/oauth/start 307 in 1981ms (next.js: 167ms, proxy.ts: 657ms, application-code: 1157ms)
+✓ Finished filesystem cache database compaction in 53s
+ GET /manifest.webmanifest 200 in 50s (next.js: 50s, application-code: 72ms)
+○ Compiling / ...
+ GET / 200 in 28.0s (next.js: 15.0s, proxy.ts: 3.1s, application-code: 9.9s)
+ GET /manifest.webmanifest 200 in 129ms (next.js: 77ms, application-code: 52ms)
+ GET /login 200 in 370ms (next.js: 92ms, proxy.ts: 52ms, application-code: 226ms)
+ POST / 303 in 6.7s (next.js: 27ms, proxy.ts: 5.1s, application-code: 1591ms)
+  └─ ƒ <inline action>() in 982ms src/components/Topbar.tsx
+ GET /manifest.webmanifest 200 in 31ms (next.js: 12ms, application-code: 19ms)
+ GET /manifest.webmanifest 200 in 43ms (next.js: 26ms, application-code: 18ms)
+ GET /login 200 in 467ms (next.js: 15ms, proxy.ts: 16ms, application-code: 436ms)
+ GET /login 200 in 246ms (next.js: 12ms, proxy.ts: 13ms, application-code: 221ms)
+ GET /manifest.webmanifest 200 in 47ms (next.js: 30ms, application-code: 18ms)
+[browser] TypeError: Failed to fetch
+    at submit (src/app/login/page.tsx:19:43)
+  17 |     setErr(null);
+  18 |     const supabase = supabaseBrowser();
+> 19 |     const { error } = await supabase.auth.signInWithPassword({ email, password });
+     |                                           ^
+  20 |     if (error) {
+  21 |       setErr("Wrong email or password.");
+  22 |       setBusy(false); (src/app/login/page.tsx:19:23)
+ GET /manifest.webmanifest 200 in 61ms (next.js: 36ms, application-code: 25ms)
+ GET /login 200 in 295ms (next.js: 16ms, proxy.ts: 11ms, application-code: 268ms)
+ GET /manifest.webmanifest 200 in 104ms (next.js: 45ms, application-code: 59ms)
+ GET /login 200 in 389ms (next.js: 12ms, proxy.ts: 12ms, application-code: 365ms)
+ GET / 200 in 3.3s (next.js: 26ms, proxy.ts: 473ms, application-code: 2.8s)
+ GET / 200 in 2.6s (next.js: 13ms, proxy.ts: 438ms, application-code: 2.1s)
+ GET /manifest.webmanifest 200 in 27ms (next.js: 10ms, application-code: 17ms)
+ GET /google-sheets 200 in 1763ms (next.js: 86ms, proxy.ts: 436ms, application-code: 1241ms)
+ GET /manifest.webmanifest 200 in 36ms (next.js: 12ms, application-code: 24ms)
+ GET /api/google/oauth/start 307 in 1002ms (next.js: 9ms, proxy.ts: 345ms, application-code: 648ms)
+○ Compiling /api/google/oauth/callback ...
+ GET /api/google/oauth/callback?iss=https://accounts.google.com&code=4/0AXEQxICdwsxKBRyNVg5DWNCCHF_XQq9hJx--q9_y5OSvtYGc-f3Webr7J3GmwgEGxzpGeQ&scope=email%20https://www.googleapis.com/auth/userinfo.email%20openid&authuser=0&prompt=consent 307 in 81s (next.js: 57s, proxy.ts: 15.8s, application-code: 8.3s)
+ GET /google-sheets?err=Request%20had%20insufficient%20authentication%20scopes. 200 in 20.9s (next.js: 13.6s, proxy.ts: 291ms, application-code: 7.0s)
+ GET /manifest.webmanifest 200 in 21ms (next.js: 7ms, application-code: 14ms)
+✓ Finished writing to filesystem cache in 42s
+ GET /api/google/oauth/start 307 in 1779ms (next.js: 19ms, proxy.ts: 855ms, application-code: 905ms)
+✓ Finished filesystem cache database compaction in 50s

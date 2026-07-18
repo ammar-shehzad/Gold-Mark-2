@@ -1,0 +1,909 @@
+
+> mallpay-whatsapp-bot@0.1.0 dev
+> tsx src/index.ts
+
+Polling mallpay_whatsapp_outbox every 5000ms.
+Scanning for due reminders every 30 minute(s).
+{"level":50,"time":1784290932560,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"AC42D1C26A1EDD724AF872A0ADE8B222"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290932573,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC55276AD835C085F3DDEFE0F130A09E"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290932579,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"151462491513039@lid","fromMe":true,"id":"ACF87158FEDD49674290438D5875B0C5"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290932583,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"ACCA4858ADC05FE9664B2B2EF23752B0"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290932592,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC7DE2D9FB82F00CB3E72495FEF947EB"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+WhatsApp connected.
+{"level":50,"time":1784290933443,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC0CB39BD85798C9275CC62F1FFEF110"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933447,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC862B465DBCADF5F08A6048DDA4A13C"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933450,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"ACE7E0BDEBA12683C39715B952A99AE0"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933458,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"ACCF315B1BD3AE5168359F1A13CA4BA3"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933462,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"ACD2F39FF7C8C83225E0E3C4B52DB11B"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933465,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC64DBD76CE10840D67496F1A910F44E"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933471,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"ACA7B59B0A4D9A11D79157EA2377740E"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933475,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"ACB197D432DFBEE069E77216F006A570"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933479,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC0F8301F87965EA6A81C2790D477935"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933482,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC671C8670AA9320E9ABD69B1E8A91AD"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933488,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"ACA97CC9798651E8801536B7A36B3DCF"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933493,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC93BB0FCFFD3A4B16FEB3CCF6C6A435"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933496,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"ACD08FF2DE32D22602B95B00B7CCFE18"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933500,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC54A67068C3FDB57743AE3ACBD34DFF"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933508,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC0C196A3E0281174953608D0E091864"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784290933511,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"91534863122526@lid","fromMe":true,"id":"AC0B1C1DD2929DA2505CC2DA9C15CD35"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784290933529,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"AC2D96A02D6799BA7FB159BB4D5887EE"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784290933550,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACBFA86C0AF2E40BFFF63C34BFC3FB04"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784290933589,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"72756913783019@lid","fromMe":true,"id":"ACD770BEF9350D50DA293D136D350D29"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784290933601,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACABB6D4248FC2EA3708B9C14AA62056"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Sent outbox #44 to +923343856244
+Sent outbox #45 to +923343856244
+{"level":50,"time":1784290993417,"pid":6952,"hostname":"DESKTOP-89MQ3SH","err":{"type":"Error","message":"Timed Out","stack":"Error: Timed Out\n    at <anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:175:6)","data":{"stack":"Error\n    at promiseTimeout (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:168:16)\n    at waitForMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:185:25)\n    at query (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:212:39)\n    at fetchProps (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:809:28)\n    at executeInitQueries (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:983:22)\n    at EventEmitter.<anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:1096:5)\n    at EventEmitter.emit (node:events:531:35)\n    at EventEmitter.<anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:81:7)\n    at EventEmitter.emit (node:events:519:28)\n    at Object.emit (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:140:14)"},"isBoom":true,"isServer":false,"output":{"statusCode":408,"payload":{"statusCode":408,"error":"Request Time-out","message":"Timed Out"},"headers":{}}},"msg":"unexpected error in 'init queries'"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784291026368,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"AC2D96A02D6799BA7FB159BB4D5887EE"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784291026627,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"72756913783019@lid","fromMe":true,"id":"ACD770BEF9350D50DA293D136D350D29"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784291026825,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACBFA86C0AF2E40BFFF63C34BFC3FB04"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Closing open session in favor of incoming prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BSPoE2XqZNXzMcVhMZbWDNzih++nVYNdm0sW/kGhVM9T': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'Bajj2+FQfnhRq3sLHsCwjlGwVjPZVdULp2YiMK05uaEM': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1057112770,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 a8 e3 db e1 50 7e 78 51 ab 7b 0b 1e c0 b0 8e 51 b0 56 33 d9 55 d5 0b a7 66 22 30 ad 39 b9 a1 0c>,
+      privKey: <Buffer 40 3a 36 f6 01 5c 16 f8 cf d4 9c e1 61 53 67 57 86 5a 12 5f e5 8c 58 20 82 85 84 6f da 9f 35 74>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 23 e8 13 65 ea 64 d5 f3 31 c5 61 31 96 d6 0c dc e2 87 ef a7 55 83 5d 9b 4b 16 fe 41 a1 54 cf 53>,
+    previousCounter: 0,
+    rootKey: <Buffer 72 77 ba 1b db 4f 3a 65 7b 64 4d d4 ac b1 fd 3e 8c 34 8a d4 df 03 c8 a3 80 29 23 c6 35 31 7b df>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 7b 49 23 9f 4e c2 e9 bd 6d 61 cc dd 09 66 58 44 59 d5 c2 2b 58 26 b9 c2 ce a8 d4 0e 5e 5c f5 07>,
+    baseKeyType: 2,
+    closed: -1,
+    used: 1784288178816,
+    created: 1784288178816,
+    remoteIdentityKey: <Buffer 05 f1 75 5d 36 26 ba 4d af 58 fc fe a0 00 62 2c 51 4b 20 a0 0f 79 c5 40 e6 7b 54 ff 98 9d aa 43 7e>
+  }
+}
+Closing open session in favor of incoming prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    BQlg52B6qYGI5dpt8BYKGWKC251XjkqwbL8tiDYiOg5U: { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BfAMXIqdi0/4+6Iuc0MTn9qdaDgiBx2oPTDLoJmpVjM5': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1057112770,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 f0 0c 5c 8a 9d 8b 4f f8 fb a2 2e 73 43 13 9f da 9d 68 38 22 07 1d a8 3d 30 cb a0 99 a9 56 33 39>,
+      privKey: <Buffer 88 c1 1d de f3 a9 da 3e 91 45 9f 68 fb 8e dc ef a9 8a f9 47 a4 e5 b7 3e 93 68 c3 c3 e4 bf 56 62>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 09 60 e7 60 7a a9 81 88 e5 da 6d f0 16 0a 19 62 82 db 9d 57 8e 4a b0 6c bf 2d 88 36 22 3a 0e 54>,
+    previousCounter: 0,
+    rootKey: <Buffer d6 14 11 fc e2 6e 53 b5 88 bc 44 1b ad 65 59 a0 df 2b b0 97 c5 a4 3f 18 04 2c a3 93 2f 63 9d 08>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 36 15 70 e7 b5 8b 4d d8 60 e7 e5 06 8d 6c dd d8 11 b3 84 fb a4 34 6f 80 c7 19 5e 76 bd 45 bb 50>,
+    baseKeyType: 2,
+    closed: -1,
+    used: 1784291027219,
+    created: 1784291027219,
+    remoteIdentityKey: <Buffer 05 f1 75 5d 36 26 ba 4d af 58 fc fe a0 00 62 2c 51 4b 20 a0 0f 79 c5 40 e6 7b 54 ff 98 9d aa 43 7e>
+  }
+}
+Closing open session in favor of incoming prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BV9Xo3BqthadPdDftjAPJ6lgKaEurKhyqlHM83J+0Z4S': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BS63VlQmnF1PmYdj2+f6YkYTgC9Qp1qEWK21L3M7zTRW': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1057112770,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 2e b7 56 54 26 9c 5d 4f 99 87 63 db e7 fa 62 46 13 80 2f 50 a7 5a 84 58 ad b5 2f 73 3b cd 34 56>,
+      privKey: <Buffer 68 a0 a3 3c 5d 3e 08 b0 a4 71 46 63 7f 67 d6 92 02 8e da 75 b3 c3 4e cb c8 17 8a 83 c1 d4 82 40>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 5f 57 a3 70 6a b6 16 9d 3d d0 df b6 30 0f 27 a9 60 29 a1 2e ac a8 72 aa 51 cc f3 72 7e d1 9e 12>,
+    previousCounter: 0,
+    rootKey: <Buffer 1c a6 61 a5 d9 7b 37 a1 39 c0 12 35 f2 32 2e 11 b5 f8 45 89 73 63 a9 cd 31 5e 91 85 1b 95 0c c7>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 a7 f2 72 d2 3f 5d 91 db 58 1a f4 51 5b d1 b4 5d 82 b9 b0 eb 94 f2 ce bd ac 03 33 98 5b 3e 74 02>,
+    baseKeyType: 2,
+    closed: -1,
+    used: 1784291027616,
+    created: 1784291027616,
+    remoteIdentityKey: <Buffer 05 f1 75 5d 36 26 ba 4d af 58 fc fe a0 00 62 2c 51 4b 20 a0 0f 79 c5 40 e6 7b 54 ff 98 9d aa 43 7e>
+  }
+}
+Sent outbox #46 to +923343856244
+Sent outbox #47 to +923343856244
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784292364482,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACBC15C38161D1AB9A037F7670F9542E"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784292370692,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACBC15C38161D1AB9A037F7670F9542E"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Closing open session in favor of incoming prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BdkN9y2QtIZzEc+p3AGk8SGFhyWguNz55xqNcFutqfJv': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BbxRTYsBoUhhNUari5rdGktRE+wAbODoJIvRrQAqqust': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1057112770,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 bc 51 4d 8b 01 a1 48 61 35 46 ab 8b 9a dd 1a 4b 51 13 ec 00 6c e0 e8 24 8b d1 ad 00 2a aa eb 2d>,
+      privKey: <Buffer 40 97 85 cd 68 f5 3b 6f f4 a7 79 18 46 47 32 19 3c a3 d8 2b dc 77 87 63 ce 86 dd 94 be aa 79 4b>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 d9 0d f7 2d 90 b4 86 73 11 cf a9 dc 01 a4 f1 21 85 87 25 a0 b8 dc f9 e7 1a 8d 70 5b ad a9 f2 6f>,
+    previousCounter: 0,
+    rootKey: <Buffer 53 5e d6 b1 49 dc 17 e8 5f 4f 5a a1 b9 1d ea 10 5e e2 ad a8 21 ee 98 18 62 95 41 35 49 d5 89 1e>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 54 ff 90 8e 57 e3 20 16 12 39 72 e2 dc 1e 29 8d a9 a2 6f 45 e7 07 4a 56 02 93 dd 6f c1 d2 10 38>,
+    baseKeyType: 2,
+    closed: -1,
+    used: 1784291028003,
+    created: 1784291028003,
+    remoteIdentityKey: <Buffer 05 f1 75 5d 36 26 ba 4d af 58 fc fe a0 00 62 2c 51 4b 20 a0 0f 79 c5 40 e6 7b 54 ff 98 9d aa 43 7e>
+  }
+}
+Reminder scan: 3 unpaid invoice(s) scanned, 0 reminder(s) enqueued, 0 skipped (cap reached).
+WhatsApp connection closed (statusCode=428, reason="Connection Terminated")
+Reconnecting in 2000ms (attempt 1/5)...
+{"level":50,"time":1784293032942,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACABB6D4248FC2EA3708B9C14AA62056"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784293032946,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"72756913783019@lid","fromMe":true,"id":"ACD770BEF9350D50DA293D136D350D29"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784293032949,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"AC2D96A02D6799BA7FB159BB4D5887EE"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784293032953,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACBFA86C0AF2E40BFFF63C34BFC3FB04"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784293032957,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"72756913783019@lid","fromMe":true,"id":"ACB9550EC2D2F7A44056B165699170AD"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784293033133,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACBC15C38161D1AB9A037F7670F9542E"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784293033139,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"AC9E35478C2120E52A032778498E29C3"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784293033143,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACF42E82B8F59D4834987B9449C90F01"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+WhatsApp connected.
+{"level":50,"time":1784293093216,"pid":6952,"hostname":"DESKTOP-89MQ3SH","err":{"type":"Error","message":"Timed Out","stack":"Error: Timed Out\n    at <anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:175:6)","data":{"stack":"Error\n    at promiseTimeout (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:168:16)\n    at waitForMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:185:25)\n    at query (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:212:39)\n    at fetchProps (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:809:28)\n    at executeInitQueries (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:983:22)\n    at EventEmitter.<anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:1096:5)\n    at EventEmitter.emit (node:events:531:35)\n    at EventEmitter.<anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:81:7)\n    at EventEmitter.emit (node:events:519:28)\n    at Object.emit (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:140:14)"},"isBoom":true,"isServer":false,"output":{"statusCode":408,"payload":{"statusCode":408,"error":"Request Time-out","message":"Timed Out"},"headers":{}}},"msg":"unexpected error in 'init queries'"}
+Sent outbox #48 to +923092604693
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784294231321,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"AC409C88A737EB061EC9AC89BDA19E1F"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 72756913783019.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784294234032,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"72756913783019@lid","fromMe":false,"id":"ACB00D11AB80FA775F12FB0FDE97D379","senderPn":"923092604693@s.whatsapp.net"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 72756913783019.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784294237467,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"AC409C88A737EB061EC9AC89BDA19E1F"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 72756913783019.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784294242237,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"72756913783019@lid","fromMe":false,"id":"ACB00D11AB80FA775F12FB0FDE97D379","senderPn":"923092604693@s.whatsapp.net"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 72756913783019.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Closing open session in favor of incoming prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BVZaXSm2mIWtEOlW/22dkfom2pJrn1EvmecRnGK3t11j': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BakHSCODfKtZyTcL3Tj/demGbs5akIfSMnWWVONeTUtW': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1057112770,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 a9 07 48 23 83 7c ab 59 c9 37 0b dd 38 ff 75 e9 86 6e ce 5a 90 87 d2 32 75 96 54 e3 5e 4d 4b 56>,
+      privKey: <Buffer 70 1d 85 e3 05 57 aa a4 b5 c6 50 d9 c4 94 4d d9 a1 99 f0 03 b8 1c 98 d4 ec 16 30 07 6c ac 97 73>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 56 5a 5d 29 b6 98 85 ad 10 e9 56 ff 6d 9d 91 fa 26 da 92 6b 9f 51 2f 99 e7 11 9c 62 b7 b7 5d 63>,
+    previousCounter: 0,
+    rootKey: <Buffer 3f 93 b4 e3 0e 0c 73 8e a5 f2 cf 94 f0 53 1b 3f d8 19 b8 62 e2 bd ca 4b 13 66 65 03 71 63 cf ac>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 1d ee d9 ff 74 de 96 d3 ad 0b d7 56 c5 60 59 d6 9d 6c 6f 5b 32 08 5b 80 67 c8 93 35 17 25 9a 6a>,
+    baseKeyType: 2,
+    closed: -1,
+    used: 1784292371598,
+    created: 1784292371598,
+    remoteIdentityKey: <Buffer 05 f1 75 5d 36 26 ba 4d af 58 fc fe a0 00 62 2c 51 4b 20 a0 0f 79 c5 40 e6 7b 54 ff 98 9d aa 43 7e>
+  }
+}
+Closing open session in favor of incoming prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BT5rKmOI7V3ITNfsMe+WQdVcQYKTKrApkVFSE/fxrGQO': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BYF16JuLI2a+FPc6UJ5b5wTW2LiHpm/GnO4Iz3Or3dRt': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 744104644,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 81 75 e8 9b 8b 23 66 be 14 f7 3a 50 9e 5b e7 04 d6 d8 b8 87 a6 6f c6 9c ee 08 cf 73 ab dd d4 6d>,
+      privKey: <Buffer 38 a5 6c 7b b8 77 ce eb ed 75 7c 5f ef 86 80 9a 05 6f 8d 55 40 cc 1f f8 bf 53 84 6e f0 95 8f 75>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 3e 6b 2a 63 88 ed 5d c8 4c d7 ec 31 ef 96 41 d5 5c 41 82 93 2a b0 29 91 51 52 13 f7 f1 ac 64 0e>,
+    previousCounter: 0,
+    rootKey: <Buffer 60 1a e3 32 e0 e2 a1 c1 29 44 ef 52 84 48 25 81 db 4b 6d c9 d2 b1 1e 41 02 ee 2a e4 a2 b3 e0 f9>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 8e 3e 03 5b 96 d8 0d be ee 97 c1 9d b4 98 af 61 0c bb a3 c5 67 8f a7 77 2b 0b c8 21 a6 e0 ec 47>,
+    baseKeyType: 2,
+    closed: -1,
+    used: 1784292936228,
+    created: 1784292936228,
+    remoteIdentityKey: <Buffer 05 4e e2 d4 bb 06 2b 2d 0f be c7 58 c5 e1 83 c8 7a 73 a9 fc a8 a7 22 70 09 f9 c9 fb 94 da 3e 6d 12>
+  }
+}
+{"level":50,"time":1784294457946,"pid":6952,"hostname":"DESKTOP-89MQ3SH","node":{"tag":"stream:error","attrs":{"code":"503"}},"msg":"stream errored out"}
+WhatsApp connection closed (statusCode=503, reason="Stream Errored (unknown)")
+Reconnecting in 2000ms (attempt 1/5)...
+{"level":50,"time":1784294461992,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACD180D3F6A9B7EFF342DDF55E05042F"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784294461996,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"AC409C88A737EB061EC9AC89BDA19E1F"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784294461999,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"AC3D93B43A0300430E0BCA53D24400EA"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784294462002,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACB823C3244FAE3C146B217A8DD54EF3"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784294462061,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"AC7C26411A4518A3B7E84E1B71788607"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784294462068,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"72756913783019@lid","fromMe":true,"id":"ACFF657C28E354B4A606AF1B80DE2E93"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784294462076,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"72756913783019@lid","fromMe":true,"id":"AC3AC274F5B65752F299F22A016E4B07"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784294462079,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"72756913783019@lid","fromMe":true,"id":"ACB476D9B43D722A1571EEADFBDCC9A2"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+WhatsApp connected.
+{"level":50,"time":1784294468321,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":false,"id":"ACF4DADA11D3774771B64C691D1DBD99","senderPn":"923343856244@s.whatsapp.net"},"err":{"type":"SessionError","message":"No session record","stack":"SessionError: No session record\n    at 267121430917121.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:169:23)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784294489520,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":false,"id":"ACF4DADA11D3774771B64C691D1DBD99","senderPn":"923343856244@s.whatsapp.net"},"err":{"type":"SessionError","message":"No session record","stack":"SessionError: No session record\n    at 267121430917121.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:169:23)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784294522183,"pid":6952,"hostname":"DESKTOP-89MQ3SH","err":{"type":"Error","message":"Timed Out","stack":"Error: Timed Out\n    at <anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:175:6)","data":{"stack":"Error\n    at promiseTimeout (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:168:16)\n    at waitForMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:185:25)\n    at query (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:212:39)\n    at fetchProps (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:809:28)\n    at executeInitQueries (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:983:22)\n    at EventEmitter.<anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:1096:5)\n    at EventEmitter.emit (node:events:531:35)\n    at EventEmitter.<anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:81:7)\n    at EventEmitter.emit (node:events:519:28)\n    at Object.emit (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:140:14)"},"isBoom":true,"isServer":false,"output":{"statusCode":408,"payload":{"statusCode":408,"error":"Request Time-out","message":"Timed Out"},"headers":{}}},"msg":"unexpected error in 'init queries'"}
+Reminder scan: 3 unpaid invoice(s) scanned, 0 reminder(s) enqueued, 0 skipped (cap reached).
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784296240748,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACA0596E16B77AB20354340126BFD941"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 19469187440893.0 [as awaitable] (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (G:\Gold-Mark-2\whatsapp-bot\node_modules\libsignal\src\queue_job.js:20:29)
+{"level":50,"time":1784296247666,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACA0596E16B77AB20354340126BFD941"},"err":{"type":"SessionError","message":"No matching sessions found for message","stack":"SessionError: No matching sessions found for message\n    at SessionCipher.decryptWithSessions (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:161:15)\n    at async 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:171:28)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"SessionError"},"msg":"failed to decrypt message"}
+Closing open session in favor of incoming prekey bundle
+Closing session: SessionEntry {
+  _chains: {
+    'BdH6xS5Unz7gUKI1/XMUeBSM7PEXbkz7Hk6fW+NxprUP': { chainKey: [Object], chainType: 2, messageKeys: {} },
+    'BVOatCOHC+Uc8eLYYAlB+yDZyqiSTf/uWqxOIwdWaB58': { chainKey: [Object], chainType: 1, messageKeys: {} }
+  },
+  registrationId: 1057112770,
+  currentRatchet: {
+    ephemeralKeyPair: {
+      pubKey: <Buffer 05 53 9a b4 23 87 0b e5 1c f1 e2 d8 60 09 41 fb 20 d9 ca a8 92 4d ff ee 5a ac 4e 23 07 56 68 1e 7c>,
+      privKey: <Buffer 20 31 9e b6 96 7c 25 11 94 b7 44 5a 64 57 0e 29 65 99 95 fd 70 9f de 11 2d 1a b5 e1 82 0a 95 4f>
+    },
+    lastRemoteEphemeralKey: <Buffer 05 d1 fa c5 2e 54 9f 3e e0 50 a2 35 fd 73 14 78 14 8c ec f1 17 6e 4c fb 1e 4e 9f 5b e3 71 a6 b5 0f>,
+    previousCounter: 0,
+    rootKey: <Buffer 2f e0 33 ee f4 05 b0 e4 d1 ce 6e f5 f6 7a 8d 20 63 ba 6f 97 08 19 f8 cf d7 94 bd 05 f0 73 27 fb>
+  },
+  indexInfo: {
+    baseKey: <Buffer 05 c2 63 e5 6c a1 1e 6b d8 29 8b be 6b 8a 91 3b 09 54 94 39 cb 8a e8 81 d6 9f be 65 a7 8d f8 fb 26>,
+    baseKeyType: 2,
+    closed: -1,
+    used: 1784294242759,
+    created: 1784294242759,
+    remoteIdentityKey: <Buffer 05 f1 75 5d 36 26 ba 4d af 58 fc fe a0 00 62 2c 51 4b 20 a0 0f 79 c5 40 e6 7b 54 ff 98 9d aa 43 7e>
+  }
+}
+Reminder scan: 3 unpaid invoice(s) scanned, 0 reminder(s) enqueued, 0 skipped (cap reached).
+{"level":50,"time":1784297463127,"pid":6952,"hostname":"DESKTOP-89MQ3SH","node":{"tag":"stream:error","attrs":{},"content":[{"tag":"ack","attrs":{"class":"message","type":"text","id":"3EB07D4ECBE27F5B8711F2"}}]},"msg":"stream errored out"}
+WhatsApp connection closed (statusCode=500, reason="Stream Errored (ack)")
+Reconnecting in 2000ms (attempt 1/5)...
+{"level":50,"time":1784297471452,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACA0596E16B77AB20354340126BFD941"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+WhatsApp connected.
+{"level":50,"time":1784297531627,"pid":6952,"hostname":"DESKTOP-89MQ3SH","err":{"type":"Error","message":"Timed Out","stack":"Error: Timed Out\n    at <anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:175:6)","data":{"stack":"Error\n    at promiseTimeout (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:168:16)\n    at waitForMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:185:25)\n    at query (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:212:39)\n    at fetchProps (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:809:28)\n    at executeInitQueries (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:983:22)\n    at EventEmitter.<anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:1096:5)\n    at EventEmitter.emit (node:events:531:35)\n    at EventEmitter.<anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:81:7)\n    at EventEmitter.emit (node:events:519:28)\n    at Object.emit (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:140:14)"},"isBoom":true,"isServer":false,"output":{"statusCode":408,"payload":{"statusCode":408,"error":"Request Time-out","message":"Timed Out"},"headers":{}}},"msg":"unexpected error in 'init queries'"}
+Reminder scan: 3 unpaid invoice(s) scanned, 0 reminder(s) enqueued, 0 skipped (cap reached).
+{"level":40,"time":1784298811392,"pid":6952,"hostname":"DESKTOP-89MQ3SH","node":{"tag":"notification","attrs":{"from":"36069286355142@lid","type":"mex","id":"2282346911","t":"1784298811"},"content":[{"tag":"update","attrs":{"op_name":"NotificationLinkedProfilesUpdates"},"content":{"type":"Buffer","data":[123,34,100,97,116,97,34,58,123,34,120,119,97,50,95,110,111,116,105,102,121,95,108,105,110,107,101,100,95,112,114,111,102,105,108,101,115,34,58,123,34,97,100,100,101,100,95,112,114,111,102,105,108,101,115,34,58,110,117,108,108,44,34,106,105,100,34,58,34,51,54,48,54,57,50,56,54,51,53,53,49,52,50,64,108,105,100,34,44,34,114,101,109,111,118,101,100,95,112,114,111,102,105,108,101,115,34,58,110,117,108,108,125,125,125]}}]},"msg":"Invalid mex newsletter notification"}
+{"level":40,"time":1784298848586,"pid":6952,"hostname":"DESKTOP-89MQ3SH","node":{"tag":"notification","attrs":{"from":"36069286355142@lid","type":"mex","id":"2641807648","t":"1784298848"},"content":[{"tag":"update","attrs":{"op_name":"NotificationLinkedProfilesUpdates"},"content":{"type":"Buffer","data":[123,34,100,97,116,97,34,58,123,34,120,119,97,50,95,110,111,116,105,102,121,95,108,105,110,107,101,100,95,112,114,111,102,105,108,101,115,34,58,123,34,97,100,100,101,100,95,112,114,111,102,105,108,101,115,34,58,110,117,108,108,44,34,106,105,100,34,58,34,51,54,48,54,57,50,56,54,51,53,53,49,52,50,64,108,105,100,34,44,34,114,101,109,111,118,101,100,95,112,114,111,102,105,108,101,115,34,58,110,117,108,108,125,125,125]}}]},"msg":"Invalid mex newsletter notification"}
+WhatsApp connection closed (statusCode=428, reason="Connection Terminated")
+Reconnecting in 2000ms (attempt 1/5)...
+WhatsApp connected.
+{"level":50,"time":1784299599824,"pid":6952,"hostname":"DESKTOP-89MQ3SH","key":{"remoteJid":"267121430917121@lid","fromMe":true,"id":"ACA92D920CD4335C0465EDBB87FA8213"},"err":{"type":"MessageCounterError","message":"Key used already or never filled","stack":"MessageCounterError: Key used already or never filled\n    at SessionCipher.doDecryptWhisperMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:236:19)\n    at 19469187440893.0 [as awaitable] (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\session_cipher.js:207:42)\n    at async _asyncQueueExecutor (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\libsignal\\src\\queue_job.js:20:29)","name":"MessageCounterError"},"msg":"failed to decrypt message"}
+{"level":50,"time":1784299659602,"pid":6952,"hostname":"DESKTOP-89MQ3SH","err":{"type":"Error","message":"Timed Out","stack":"Error: Timed Out\n    at <anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:175:6)","data":{"stack":"Error\n    at promiseTimeout (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\generics.ts:168:16)\n    at waitForMessage (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:185:25)\n    at query (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\socket.ts:212:39)\n    at fetchProps (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:809:28)\n    at executeInitQueries (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:983:22)\n    at EventEmitter.<anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Socket\\chats.ts:1096:5)\n    at EventEmitter.emit (node:events:531:35)\n    at EventEmitter.<anonymous> (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:81:7)\n    at EventEmitter.emit (node:events:519:28)\n    at Object.emit (G:\\Gold-Mark-2\\whatsapp-bot\\node_modules\\baileys\\src\\Utils\\event-buffer.ts:140:14)"},"isBoom":true,"isServer":false,"output":{"statusCode":408,"payload":{"statusCode":408,"error":"Request Time-out","message":"Timed Out"},"headers":{}}},"msg":"unexpected error in 'init queries'"}
+Reminder scan: 3 unpaid invoice(s) scanned, 0 reminder(s) enqueued, 0 skipped (cap reached).
+Reminder scan: 3 unpaid invoice(s) scanned, 0 reminder(s) enqueued, 0 skipped (cap reached).

@@ -4,8 +4,10 @@ import { supabaseServer } from "@/lib/supabase/server";
 export type Profile = {
   id: string;
   name: string;
-  role: "admin" | "staff";
+  role: "admin" | "staff" | "owner";
   active: boolean;
+  staff_type?: "collector" | "department" | null;
+  department?: string | null;
 };
 
 export async function requireUser(): Promise<Profile> {
@@ -21,5 +23,17 @@ export async function requireUser(): Promise<Profile> {
 export async function requireAdmin(): Promise<Profile> {
   const p = await requireUser();
   if (p.role !== "admin") redirect("/collect");
+  return p;
+}
+
+export async function requireStaff(): Promise<Profile> {
+  const p = await requireUser();
+  if (p.role !== "admin" && p.role !== "staff") redirect("/");
+  return p;
+}
+
+export async function requireOwner(): Promise<Profile> {
+  const p = await requireUser();
+  if (p.role !== "owner") redirect("/");
   return p;
 }
