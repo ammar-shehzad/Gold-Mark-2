@@ -5,6 +5,7 @@ import makeWASocket, {
   type WASocket,
 } from "baileys";
 import { Boom } from "@hapi/boom";
+import { rm } from "node:fs/promises";
 import pino from "pino";
 import qrcode from "qrcode-terminal";
 import { supabase } from "./supabase.js";
@@ -62,7 +63,17 @@ export async function connectWhatsApp(): Promise<void> {
       reportStatus({ connected: false }).catch(() => {});
 
       if (loggedOut) {
-        console.log("Logged out — delete the auth/ folder and re-scan a fresh QR code.");
+        // Automatic handover: when the linked number logs the bot out from
+        // its phone (Linked Devices -> Log out), the saved session keys are
+        // permanently dead. Wipe them and reconnect immediately — that
+        // reconnect has no session, so it generates a fresh QR, which
+        // reportStatus pushes to the admin's /whatsapp page for the next
+        // number to scan. No manual folder deletion or restart needed.
+        console.log("Logged out — clearing the dead session and generating a fresh QR to re-link.");
+        rm("auth", { recursive: true, force: true })
+          .catch((e) => console.error("Could not remove auth/ folder:", e))
+          .then(() => connectWhatsApp())
+          .catch((e) => console.error("Reconnect after logout failed:", e));
         return;
       }
 
