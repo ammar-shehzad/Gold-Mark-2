@@ -43,17 +43,32 @@ async function createOwner(formData: FormData) {
     redirect("/owners?new=1&err=Owner+needs+a+name,+email,+and+a+password+of+at+least+6+characters");
   }
 
-  const admin = supabaseAdmin();
-  const { data, error } = await admin.auth.admin.createUser({
-    email, password, email_confirm: true, user_metadata: { name },
-  });
-  if (error || !data.user) redirect("/owners?new=1&err=Could+not+create+the+account+—+is+the+email+already+used%3F");
-
-  await admin.from("profiles").update({ name, role: "owner", whatsapp_number: whatsapp }).eq("id", data.user.id);
-  if (shopIds.length > 0) {
-    await admin.from("mallpay_shop_owners").insert(shopIds.map((id) => ({ shop_id: id, owner_id: data.user.id })));
-    for (const shopId of shopIds) await syncShopOwnerFields(shopId);
+  // Any throw in here (e.g. supabaseAdmin() failing because the host is
+  // missing SUPABASE_SERVICE_ROLE_KEY) surfaces as a readable message on
+  // the page instead of a generic crash screen. redirect() must stay
+  // OUTSIDE the try — it works by throwing, and a catch would swallow it.
+  let failMessage: string | null = null;
+  try {
+    const admin = supabaseAdmin();
+    const { data, error } = await admin.auth.admin.createUser({
+      email, password, email_confirm: true, user_metadata: { name },
+    });
+    if (error || !data.user) {
+      failMessage = error?.message
+        ? `Could not create the account: ${error.message}`
+        : "Could not create the account — is the email already used?";
+    } else {
+      const ownerId = data.user.id;
+      await admin.from("profiles").update({ name, role: "owner", whatsapp_number: whatsapp }).eq("id", ownerId);
+      if (shopIds.length > 0) {
+        await admin.from("mallpay_shop_owners").insert(shopIds.map((id) => ({ shop_id: id, owner_id: ownerId })));
+        for (const shopId of shopIds) await syncShopOwnerFields(shopId);
+      }
+    }
+  } catch (e) {
+    failMessage = e instanceof Error ? e.message : String(e);
   }
+  if (failMessage) redirect(`/owners?new=1&err=${encodeURIComponent(failMessage)}`);
   redirect("/owners?ok=Owner+account+created");
 }
 
