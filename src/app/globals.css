@@ -67,8 +67,13 @@ a{color:var(--accent)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
   padding:16px 18px;margin:0 0 16px;box-shadow:var(--shadow-sm)}
 .grid{display:grid;gap:12px;margin:0 0 16px}
-.grid.c4{grid-template-columns:repeat(4,1fr)}
-.grid.c2{grid-template-columns:repeat(2,1fr)}
+/* minmax(0,1fr) — a plain 1fr track can't shrink below its content's
+   min-width (e.g. the 520px min-width tables inside .tablewrap), which
+   blew the whole page out sideways on phones. minmax(0,1fr) lets the
+   track shrink so .tablewrap scrolls internally instead. */
+.grid.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid>*{min-width:0}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;box-shadow:var(--shadow-sm)}
 .stat .l{font-size:12.5px;color:var(--muted)}
 .stat .v{font-size:22px;font-weight:650;margin-top:2px}
@@ -94,7 +99,7 @@ input[type=text],input[type=number],input[type=email],input[type=password],selec
   font:inherit;background:var(--surface);color:var(--ink)}
 input:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
 .field{margin:0 0 13px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.frow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:var(--radius-sm);
   padding:9px 16px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;transition:filter var(--transition-fast)}
 .btn:hover{filter:brightness(.92)}
@@ -116,9 +121,9 @@ input:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(-
 .tablewrap table th:first-child,.tablewrap table td:first-child{
   position:sticky;left:0;background:var(--card);z-index:1}
 @media (max-width:768px){
-  .grid.c4{grid-template-columns:1fr 1fr}
-  .grid.c2{grid-template-columns:1fr}
-  .frow{grid-template-columns:1fr}
+  .grid.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid.c2{grid-template-columns:minmax(0,1fr)}
+  .frow{grid-template-columns:minmax(0,1fr)}
   .who{width:100%;justify-content:space-between;margin-left:0}
   .btn.small{padding:10px 16px;font-size:15px}
   .card{padding:12px 12px}
@@ -213,6 +218,7 @@ input:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(-
 .kpi-icon{display:flex;align-items:center;justify-content:center;width:40px;height:40px;flex:0 0 40px;
   border-radius:var(--radius-md);background:var(--accent-soft);color:var(--accent)}
 .kpi-icon.bad{background:var(--danger-soft);color:var(--danger)}
+.kpi-body{flex:1;min-width:0}
 .kpi-label{font-size:12.5px;color:var(--muted)}
 .kpi-value{font-size:22px;font-weight:650;margin-top:2px;font-variant-numeric:tabular-nums}
 .kpi-value.good{color:var(--success)} .kpi-value.bad{color:var(--danger)}
@@ -235,3 +241,19 @@ input:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(-
 .donut-legend-dot{width:9px;height:9px;border-radius:50%;flex:0 0 9px}
 .donut-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .linechart-labels{display:flex;justify-content:space-between;font-size:11.5px;margin-top:4px}
+
+/* ---- route transition loading screen (app/loading.tsx) ---- */
+.route-loading{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:16px;background:var(--bg)}
+.route-loading .mark{width:44px;height:44px;font-size:21px;border-radius:11px;
+  animation:route-pulse 1.2s ease-in-out infinite}
+.route-loading-spinner{width:30px;height:30px;border-radius:50%;
+  border:3px solid var(--accent-soft);border-top-color:var(--accent);
+  animation:route-spin .8s linear infinite}
+.route-loading-text{font-size:13.5px;color:var(--muted)}
+@keyframes route-spin{to{transform:rotate(360deg)}}
+@keyframes route-pulse{0%,100%{opacity:1}50%{opacity:.55}}
+@media (prefers-reduced-motion:reduce){
+  .route-loading-spinner{animation-duration:2s}
+  .route-loading .mark{animation:none}
+}

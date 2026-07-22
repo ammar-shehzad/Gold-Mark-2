@@ -31,7 +31,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <Script id="theme-init" strategy="beforeInteractive">{THEME_INIT}</Script>
       </head>
-      <body>{children}</body>
+      {/* suppressHydrationWarning: browser extensions (e.g. ColorZilla's
+          cz-shortcut-listen) inject attributes into <body> before React
+          hydrates — that attribute-level mismatch is noise, not a bug.
+          This only silences attribute warnings on <body> itself, not
+          hydration issues in children. */}
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }

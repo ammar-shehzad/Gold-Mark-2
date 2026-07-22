@@ -59,3 +59,4 @@
  GET /api/google/oauth/start 307 in 1779ms (next.js: 19ms, proxy.ts: 855ms, application-code: 905ms)
 ✓ Finished filesystem cache database compaction in 50s
 ✓ Finished writing to filesystem cache in 13.3s
+✓ Finished writing to filesystem cache in 74s
