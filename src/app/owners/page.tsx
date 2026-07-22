@@ -206,9 +206,13 @@ export default async function OwnersPage({
                 </tr>
               ))}
             </tbody>
-          </table></div>
+          </table>
+          
+          
+          </div>
         )}
       </div>
+      
     </AppShell>
   );
 }
