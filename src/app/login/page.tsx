@@ -25,9 +25,21 @@ export default function LoginPage() {
     setBusy(true);
     setErr(null);
     const supabase = supabaseBrowser();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
       setErr("Wrong email or password.");
+      setBusy(false);
+      return;
+    }
+    // Disabled accounts: surface it right here instead of navigating. The
+    // middleware would bounce "/" straight back to /login?disabled=1, but
+    // that same-segment bounce doesn't remount this page - the button
+    // would sit on "Signing in..." until a manual reload.
+    const { data: profile } = await supabase
+      .from("profiles").select("active").eq("id", data.user.id).single();
+    if (!profile || !profile.active) {
+      await supabase.auth.signOut();
+      setErr("This account has been disabled - contact the administrator.");
       setBusy(false);
       return;
     }
