@@ -57,6 +57,33 @@ async function deleteDepartment(formData: FormData) {
   redirect("/setup?ok=Department+removed");
 }
 
+// Shared by the three account-creation actions below. Returns the new
+// user's id, or a human-readable failure message. Mirrors owners/page.tsx:
+// the REAL Supabase error (wrong service key, invalid email, duplicate...)
+// is surfaced on the page instead of a canned guess, and any throw (e.g.
+// supabaseAdmin() missing its env var on the host) becomes a readable
+// banner instead of a crash screen.
+async function createAuthAccount(
+  name: string, email: string, password: string
+): Promise<{ userId: string } | { fail: string }> {
+  try {
+    const admin = supabaseAdmin();
+    const { data, error } = await admin.auth.admin.createUser({
+      email, password, email_confirm: true, user_metadata: { name },
+    });
+    if (error || !data.user) {
+      return {
+        fail: error?.message
+          ? `Could not create the account: ${error.message}`
+          : "Could not create the account - is the email already used?",
+      };
+    }
+    return { userId: data.user.id };
+  } catch (err) {
+    return { fail: err instanceof Error ? err.message : String(err) };
+  }
+}
+
 async function createAdmin(formData: FormData) {
   "use server";
   await requireAdmin();
@@ -66,12 +93,9 @@ async function createAdmin(formData: FormData) {
   if (!name || !email || password.length < 6) {
     redirect("/setup?err=Admin+needs+a+name,+email,+and+a+password+of+at+least+6+characters");
   }
-  const admin = supabaseAdmin();
-  const { data, error } = await admin.auth.admin.createUser({
-    email, password, email_confirm: true, user_metadata: { name },
-  });
-  if (error || !data.user) redirect("/setup?err=Could+not+create+the+account+-+is+the+email+already+used%3F");
-  await admin.from("profiles").update({ name, role: "admin" }).eq("id", data.user.id);
+  const res = await createAuthAccount(name, email, password);
+  if ("fail" in res) redirect(`/setup?err=${encodeURIComponent(res.fail)}`);
+  await supabaseAdmin().from("profiles").update({ name, role: "admin" }).eq("id", res.userId);
   redirect("/setup?ok=Admin+account+created");
 }
 
@@ -84,12 +108,9 @@ async function createCollectionStaff(formData: FormData) {
   if (!name || !email || password.length < 6) {
     redirect("/setup?err=Staff+needs+a+name,+email,+and+a+password+of+at+least+6+characters");
   }
-  const admin = supabaseAdmin();
-  const { data, error } = await admin.auth.admin.createUser({
-    email, password, email_confirm: true, user_metadata: { name },
-  });
-  if (error || !data.user) redirect("/setup?err=Could+not+create+the+account+-+is+the+email+already+used%3F");
-  await admin.from("profiles").update({ name, role: "staff", staff_type: "collector", department: null }).eq("id", data.user.id);
+  const res = await createAuthAccount(name, email, password);
+  if ("fail" in res) redirect(`/setup?err=${encodeURIComponent(res.fail)}`);
+  await supabaseAdmin().from("profiles").update({ name, role: "staff", staff_type: "collector", department: null }).eq("id", res.userId);
   redirect("/setup?ok=Collection+staff+account+created");
 }
 
@@ -104,15 +125,12 @@ async function createDepartmentStaff(formData: FormData) {
   if (!name || !email || password.length < 6) {
     redirect("/setup?err=Staff+needs+a+name,+email,+and+a+password+of+at+least+6+characters");
   }
-  const admin = supabaseAdmin();
-  const { data, error } = await admin.auth.admin.createUser({
-    email, password, email_confirm: true, user_metadata: { name },
-  });
-  if (error || !data.user) redirect("/setup?err=Could+not+create+the+account+-+is+the+email+already+used%3F");
-  await admin
+  const res = await createAuthAccount(name, email, password);
+  if ("fail" in res) redirect(`/setup?err=${encodeURIComponent(res.fail)}`);
+  await supabaseAdmin()
     .from("profiles")
     .update({ name, role: "staff", staff_type: "department", department, whatsapp_number: whatsapp })
-    .eq("id", data.user.id);
+    .eq("id", res.userId);
   redirect("/setup?ok=Department+staff+account+created");
 }
 
