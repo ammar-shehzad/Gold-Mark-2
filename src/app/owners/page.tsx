@@ -1,4 +1,5 @@
 import AppShell from "@/components/AppShell";
+import ConfirmButton from "@/components/ConfirmButton";
 import { requireAdmin } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -70,6 +71,30 @@ async function createOwner(formData: FormData) {
   }
   if (failMessage) redirect(`/owners?new=1&err=${encodeURIComponent(failMessage)}`);
   redirect("/owners?ok=Owner+account+created");
+}
+
+async function deleteOwner(formData: FormData) {
+  "use server";
+  await requireAdmin();
+  const ownerId = String(formData.get("id"));
+  if (!ownerId) redirect("/owners");
+
+  // Service-role client: the owner's dependents span tables with no delete
+  // policy for regular sessions, and the auth account itself can only be
+  // removed via the admin API. Order matters (FK constraints).
+  const admin = supabaseAdmin();
+  const { data: links } = await admin.from("mallpay_shop_owners").select("shop_id").eq("owner_id", ownerId);
+  const shopIds = (links ?? []).map((l) => l.shop_id);
+
+  await admin.from("mallpay_reminder_log").delete().eq("owner_id", ownerId);
+  await admin.from("mallpay_payment_submissions").delete().eq("owner_id", ownerId);
+  await admin.from("mallpay_complaints").delete().eq("owner_id", ownerId);
+  // profiles + mallpay_shop_owners rows cascade when the auth user goes
+  const { error } = await admin.auth.admin.deleteUser(ownerId);
+  if (error) redirect(`/owners?err=${encodeURIComponent(`Could not delete the owner: ${error.message}`)}`);
+
+  for (const shopId of shopIds) await syncShopOwnerFields(shopId);
+  redirect("/owners?ok=Owner+deleted");
 }
 
 async function toggleOwner(formData: FormData) {
@@ -216,6 +241,15 @@ export default async function OwnersPage({
                     <form action={toggleOwner} style={{ display: "inline" }}>
                       <input type="hidden" name="id" value={o.id} />
                       <button className="btn ghost small">{o.active ? "Disable" : "Enable"}</button>
+                    </form>{" "}
+                    <form action={deleteOwner} style={{ display: "inline" }}>
+                      <input type="hidden" name="id" value={o.id} />
+                      <ConfirmButton
+                        className="btn ghost small"
+                        message={`Delete owner ${o.name}? Their login, complaints, and payment submissions are removed and their shops become vacant. This cannot be undone.`}
+                      >
+                        Delete
+                      </ConfirmButton>
                     </form>
                   </td>
                 </tr>

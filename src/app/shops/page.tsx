@@ -1,6 +1,8 @@
 import AppShell from "@/components/AppShell";
+import ConfirmButton from "@/components/ConfirmButton";
 import { requireAdmin } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import { money } from "@/lib/util";
 import { redirect } from "next/navigation";
 import Link from "next/link";
@@ -36,6 +38,30 @@ async function saveShop(formData: FormData) {
   const { error } = await q;
   if (error) redirect(`/shops?${id ? `edit=${id}` : "new=1"}&err=duplicate`);
   redirect("/shops?ok=1");
+}
+
+async function deleteShop(formData: FormData) {
+  "use server";
+  await requireAdmin();
+  const id = Number(formData.get("id"));
+  if (!id) redirect("/shops");
+
+  // Service-role client: a shop's dependents span tables that have no
+  // delete policy for regular sessions (payment submissions, reminder log),
+  // and they must go in FK order or Postgres rejects the delete.
+  const admin = supabaseAdmin();
+  const { data: invs } = await admin.from("invoices").select("id").eq("shop_id", id);
+  const invIds = (invs ?? []).map((i) => i.id);
+  if (invIds.length > 0) {
+    await admin.from("mallpay_reminder_log").delete().in("invoice_id", invIds);
+    await admin.from("mallpay_payment_submissions").delete().in("invoice_id", invIds);
+    await admin.from("invoices").delete().in("id", invIds);
+  }
+  await admin.from("mallpay_complaints").delete().eq("shop_id", id);
+  // mallpay_shop_owners rows cascade with the shop itself
+  const { error } = await admin.from("shops").delete().eq("id", id);
+  if (error) redirect(`/shops?err=delete`);
+  redirect("/shops?ok=2");
 }
 
 export default async function ShopsPage({
@@ -78,7 +104,12 @@ export default async function ShopsPage({
         <h1>{showForm ? (editing ? "Edit shop" : "Register shop") : "Shops"}</h1>
         {sp.err === "duplicate" && <div className="flash err">That shop number already exists - use a different one.</div>}
         {sp.err === "missing" && <div className="flash err">Shop number, name, floor, and a monthly fee above zero are required.</div>}
-        {sp.ok && <div className="flash ok">Shop saved.</div>}
+        {sp.err === "delete" && <div className="flash err">Could not delete the shop - try again.</div>}
+        {sp.ok === "2" ? (
+          <div className="flash ok">Shop deleted, along with its invoices and complaints.</div>
+        ) : sp.ok ? (
+          <div className="flash ok">Shop saved.</div>
+        ) : null}
 
         {showForm ? (
           <div className="card" style={{ maxWidth: 560, marginTop: 14 }}>
@@ -175,7 +206,16 @@ export default async function ShopsPage({
                         </td>
                         <td className="r num">{money(Number(s.custom_fee ?? 0))}</td>
                         <td className="r">
-                          <Link className="btn ghost small" href={`/shops?edit=${s.id}`}>Edit</Link>
+                          <Link className="btn ghost small" href={`/shops?edit=${s.id}`}>Edit</Link>{" "}
+                          <form action={deleteShop} style={{ display: "inline" }}>
+                            <input type="hidden" name="id" value={String(s.id)} />
+                            <ConfirmButton
+                              className="btn ghost small"
+                              message={`Delete shop ${String(s.shop_number)}? This also deletes its invoices, payment history, and complaints. This cannot be undone.`}
+                            >
+                              Delete
+                            </ConfirmButton>
+                          </form>
                         </td>
                       </tr>
                       );

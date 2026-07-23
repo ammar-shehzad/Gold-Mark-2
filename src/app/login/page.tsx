@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import BrandLogo from "@/components/BrandLogo";
@@ -10,6 +10,15 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+
+  // The middleware signs out disabled accounts and lands them here with
+  // ?disabled=1 - read it from location instead of useSearchParams so the
+  // page stays statically prerenderable without a Suspense boundary.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("disabled")) {
+      setErr("This account has been disabled - contact the administrator.");
+    }
+  }, []);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
