@@ -120,6 +120,13 @@ input:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(-
 .tablewrap table{min-width:520px}
 .tablewrap table th:first-child,.tablewrap table td:first-child{
   position:sticky;left:0;background:var(--card);z-index:1}
+/* .fit - for small tables (name + action button) that must show their
+   buttons without sideways scrolling: no forced min-width, no scroll
+   affordances. */
+.tablewrap.fit{box-shadow:none}
+.tablewrap.fit table{min-width:0}
+.tablewrap.fit table th:first-child,.tablewrap.fit table td:first-child{position:static}
+.row-actions{display:inline-flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 @media (max-width:768px){
   .grid.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grid.c2{grid-template-columns:minmax(0,1fr)}

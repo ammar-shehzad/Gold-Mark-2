@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { supabaseServer } from "@/lib/supabase/server";
 import type { Profile } from "@/lib/auth";
-import { SearchIcon, BellIcon, LogoutIcon } from "./icons";
+import { SearchIcon, LogoutIcon } from "./icons";
 import ThemeToggle from "./ThemeToggle";
 
 async function signOut() {
@@ -21,9 +21,6 @@ export default function Topbar({ user, title }: { user: Profile; title: string }
       </form>
       <div className="topbar-actions">
         <ThemeToggle />
-        <button type="button" className="icon-btn" aria-label="Notifications">
-          <BellIcon size={18} />
-        </button>
         <div className="topbar-user">
           <span className="topbar-avatar" aria-hidden="true">{user.name.charAt(0).toUpperCase()}</span>
           <span className="topbar-user-name">

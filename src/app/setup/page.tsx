@@ -1,4 +1,5 @@
 import AppShell from "@/components/AppShell";
+import ConfirmButton from "@/components/ConfirmButton";
 import { requireAdmin } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -145,6 +146,26 @@ async function toggleUser(formData: FormData) {
   redirect("/setup?ok=Account+updated");
 }
 
+async function deleteUser(formData: FormData) {
+  "use server";
+  const me = await requireAdmin();
+  const id = String(formData.get("id"));
+  if (!id || id === me.id) redirect("/setup"); // never delete your own account
+
+  // Service-role client: detach every reference that would block the
+  // delete. Collection/review history keeps its rows - only the "by whom"
+  // link is cleared; notices are reassigned to the acting admin.
+  const admin = supabaseAdmin();
+  await admin.from("invoices").update({ collected_by: null }).eq("collected_by", id);
+  await admin.from("mallpay_payment_submissions").update({ reviewed_by: null }).eq("reviewed_by", id);
+  await admin.from("mallpay_complaints").update({ assigned_to: null }).eq("assigned_to", id);
+  await admin.from("mallpay_notices").update({ created_by: me.id }).eq("created_by", id);
+  await admin.from("mallpay_whatsapp_outbox").update({ to_profile_id: null }).eq("to_profile_id", id);
+  const { error } = await admin.auth.admin.deleteUser(id); // profiles row cascades
+  if (error) redirect(`/setup?err=${encodeURIComponent(`Could not delete the account: ${error.message}`)}`);
+  redirect("/setup?ok=Account+deleted");
+}
+
 async function savePaymentDetails(formData: FormData) {
   "use server";
   await requireAdmin();
@@ -189,10 +210,21 @@ export default async function SetupPage({
 
   const renderToggle = (x: Person) => (
     x.id !== user.id ? (
-      <form action={toggleUser} style={{ display: "inline" }}>
-        <input type="hidden" name="id" value={x.id} />
-        <button className="btn ghost small">{x.active ? "Disable" : "Enable"}</button>
-      </form>
+      <span className="row-actions">
+        <form action={toggleUser} style={{ display: "inline" }}>
+          <input type="hidden" name="id" value={x.id} />
+          <button className="btn ghost small">{x.active ? "Disable" : "Enable"}</button>
+        </form>
+        <form action={deleteUser} style={{ display: "inline" }}>
+          <input type="hidden" name="id" value={x.id} />
+          <ConfirmButton
+            className="btn ghost small"
+            message={`Delete ${x.name}'s account? Their login is removed permanently; records they worked on are kept. This cannot be undone.`}
+          >
+            Delete
+          </ConfirmButton>
+        </form>
+      </span>
     ) : (
       <span className="muted">you</span>
     )
@@ -207,7 +239,7 @@ export default async function SetupPage({
         <div className="grid c2" style={{ marginTop: 14 }}>
           <div className="card" style={{ margin: 0 }}>
             <h2>Floors</h2>
-            <div className="tablewrap"><table>
+            <div className="tablewrap fit"><table>
               <tbody>
                 {(floors ?? []).map(f => (
                   <tr key={f.id}>
@@ -233,7 +265,7 @@ export default async function SetupPage({
             <p className="muted" style={{ marginTop: 0, fontSize: 13 }}>
               Complaints are routed to staff by department. Add as many as you need.
             </p>
-            <div className="tablewrap"><table>
+            <div className="tablewrap fit"><table>
               <tbody>
                 {(departments ?? []).map(d => (
                   <tr key={d.id}>
@@ -258,7 +290,7 @@ export default async function SetupPage({
 
         <div className="card">
           <h2>Admins</h2>
-          <div className="tablewrap"><table>
+          <div className="tablewrap fit"><table>
             <thead><tr><th>Name</th><th className="r" /></tr></thead>
             <tbody>
               {admins.map(x => (
@@ -284,7 +316,7 @@ export default async function SetupPage({
           <p className="muted" style={{ marginTop: 0 }}>
             Only see the Collect page - mark maintenance payments as collected. No totals, dashboards, complaints, or reports.
           </p>
-          <div className="tablewrap"><table>
+          <div className="tablewrap fit"><table>
             <thead><tr><th>Name</th><th className="r" /></tr></thead>
             <tbody>
               {collectionStaff.map(x => (
