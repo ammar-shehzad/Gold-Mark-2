@@ -24,7 +24,7 @@ async function deleteFloor(formData: FormData) {
   const id = Number(formData.get("id"));
   const supabase = await supabaseServer();
   const { count } = await supabase.from("shops").select("id", { count: "exact", head: true }).eq("floor_id", id);
-  if ((count ?? 0) > 0) redirect("/setup?err=That+floor+has+shops+on+it+—+move+them+first");
+  if ((count ?? 0) > 0) redirect("/setup?err=That+floor+has+shops+on+it+-+move+them+first");
   await supabase.from("floors").delete().eq("id", id);
   redirect("/setup?ok=Floor+removed");
 }
@@ -52,7 +52,7 @@ async function deleteDepartment(formData: FormData) {
     .select("id", { count: "exact", head: true })
     .eq("department", name)
     .eq("active", true);
-  if ((count ?? 0) > 0) redirect("/setup?err=That+department+has+active+staff+—+reassign+them+first");
+  if ((count ?? 0) > 0) redirect("/setup?err=That+department+has+active+staff+-+reassign+them+first");
   await supabase.from("mallpay_departments").delete().eq("id", id);
   redirect("/setup?ok=Department+removed");
 }
@@ -70,7 +70,7 @@ async function createAdmin(formData: FormData) {
   const { data, error } = await admin.auth.admin.createUser({
     email, password, email_confirm: true, user_metadata: { name },
   });
-  if (error || !data.user) redirect("/setup?err=Could+not+create+the+account+—+is+the+email+already+used%3F");
+  if (error || !data.user) redirect("/setup?err=Could+not+create+the+account+-+is+the+email+already+used%3F");
   await admin.from("profiles").update({ name, role: "admin" }).eq("id", data.user.id);
   redirect("/setup?ok=Admin+account+created");
 }
@@ -88,7 +88,7 @@ async function createCollectionStaff(formData: FormData) {
   const { data, error } = await admin.auth.admin.createUser({
     email, password, email_confirm: true, user_metadata: { name },
   });
-  if (error || !data.user) redirect("/setup?err=Could+not+create+the+account+—+is+the+email+already+used%3F");
+  if (error || !data.user) redirect("/setup?err=Could+not+create+the+account+-+is+the+email+already+used%3F");
   await admin.from("profiles").update({ name, role: "staff", staff_type: "collector", department: null }).eq("id", data.user.id);
   redirect("/setup?ok=Collection+staff+account+created");
 }
@@ -108,7 +108,7 @@ async function createDepartmentStaff(formData: FormData) {
   const { data, error } = await admin.auth.admin.createUser({
     email, password, email_confirm: true, user_metadata: { name },
   });
-  if (error || !data.user) redirect("/setup?err=Could+not+create+the+account+—+is+the+email+already+used%3F");
+  if (error || !data.user) redirect("/setup?err=Could+not+create+the+account+-+is+the+email+already+used%3F");
   await admin
     .from("profiles")
     .update({ name, role: "staff", staff_type: "department", department, whatsapp_number: whatsapp })
@@ -264,7 +264,7 @@ export default async function SetupPage({
         <div className="card">
           <h2>Collection staff</h2>
           <p className="muted" style={{ marginTop: 0 }}>
-            Only see the Collect page — mark maintenance payments as collected. No totals, dashboards, complaints, or reports.
+            Only see the Collect page - mark maintenance payments as collected. No totals, dashboards, complaints, or reports.
           </p>
           <div className="tablewrap"><table>
             <thead><tr><th>Name</th><th className="r" /></tr></thead>
@@ -290,7 +290,7 @@ export default async function SetupPage({
         <div className="card">
           <h2>Department staff</h2>
           <p className="muted" style={{ marginTop: 0 }}>
-            Only see complaints for their own department — never the Collect page or payment ledger.
+            Only see complaints for their own department - never the Collect page or payment ledger.
           </p>
           <div className="tablewrap"><table>
             <thead><tr><th>Name</th><th>Department</th><th>WhatsApp</th><th className="r" /></tr></thead>
@@ -298,8 +298,8 @@ export default async function SetupPage({
               {departmentStaff.map(x => (
                 <tr key={x.id}>
                   <td>{x.name}{!x.active && <> <span className="badge off">disabled</span></>}</td>
-                  <td>{x.department ?? <span className="muted">—</span>}</td>
-                  <td>{x.whatsapp_number ?? <span className="muted">—</span>}</td>
+                  <td>{x.department ?? <span className="muted">-</span>}</td>
+                  <td>{x.whatsapp_number ?? <span className="muted">-</span>}</td>
                   <td className="r">{renderToggle(x)}</td>
                 </tr>
               ))}

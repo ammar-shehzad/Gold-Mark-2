@@ -69,9 +69,9 @@ export default async function OwnerPage({
     <AppShell user={user} active="/owner">
       <h1>My invoices</h1>
       {sp.err === "missing" && <div className="flash err">Amount, payment date, and a screenshot are required.</div>}
-      {sp.err === "upload" && <div className="flash err">Could not upload the screenshot — try again.</div>}
-      {sp.err === "save" && <div className="flash err">Could not save the payment details — try again.</div>}
-      {sp.ok === "1" && <div className="flash ok">Payment submitted — the admin will review it shortly.</div>}
+      {sp.err === "upload" && <div className="flash err">Could not upload the screenshot - try again.</div>}
+      {sp.err === "save" && <div className="flash err">Could not save the payment details - try again.</div>}
+      {sp.ok === "1" && <div className="flash ok">Payment submitted - the admin will review it shortly.</div>}
 
       {payingInvoice && (
         <div className="card" style={{ maxWidth: 480, marginTop: 14 }}>
@@ -84,7 +84,7 @@ export default async function OwnerPage({
               <p className="num" style={{ margin: 0, fontWeight: 650 }}>{settings?.bank_account_number}</p>
             </div>
           ) : (
-            <p className="muted">Bank details haven&apos;t been set up yet — contact the admin.</p>
+            <p className="muted">Bank details haven&apos;t been set up yet - contact the admin.</p>
           )}
           <form action={submitPayment} style={{ marginTop: 14 }}>
             <input type="hidden" name="invoice_id" value={payingInvoice.id} />

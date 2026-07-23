@@ -81,7 +81,7 @@ export default async function GoogleSheetsPage({
             <h2>Connect your Google account</h2>
             <p className="muted" style={{ marginTop: 0 }}>
               Syncs your invoice ledger to a Google Sheet daily. Editing <strong>Status</strong> or <strong>Note</strong> in
-              the sheet updates the app too — shop, period, and amount are read-only in the sheet and can never be
+              the sheet updates the app too - shop, period, and amount are read-only in the sheet and can never be
               changed from there.
             </p>
             <a className="btn" href="/api/google/oauth/start">Connect Google account</a>
@@ -135,7 +135,7 @@ export default async function GoogleSheetsPage({
                     <td className="r num">{row.invoices_exported}</td>
                     <td className="r num">{row.invoices_imported}</td>
                     <td className="r num">{row.conflicts}</td>
-                    <td className="rowsub">{row.error ?? "—"}</td>
+                    <td className="rowsub">{row.error ?? "-"}</td>
                   </tr>
                 ))}
               </tbody>

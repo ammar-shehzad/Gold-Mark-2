@@ -90,7 +90,7 @@ export default async function AdminComplaintsPage({
         <p className="muted" style={{ marginTop: -8 }}>
           {department
             ? `Showing ${department} complaints only.`
-            : "No department assigned to your account yet — ask the admin to set one in Setup."}
+            : "No department assigned to your account yet - ask the admin to set one in Setup."}
         </p>
       )}
       {sp.ok && <div className="flash ok">Updated.</div>}
@@ -119,7 +119,7 @@ export default async function AdminComplaintsPage({
                   <td>{c.shops.shop_number} · {c.shops.name}</td>
                   <td>{c.category}</td>
                   <td style={{ maxWidth: 260 }}>{c.description}</td>
-                  <td>{c.profiles?.name ?? "—"}</td>
+                  <td>{c.profiles?.name ?? "-"}</td>
                   <td className="r">
                     <form action={updateComplaintStatus}>
                       <input type="hidden" name="id" value={c.id} />

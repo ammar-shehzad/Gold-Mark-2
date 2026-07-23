@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
   doc.on("data", (chunk: Buffer) => chunks.push(chunk));
   const done = new Promise<Buffer>((resolve) => doc.on("end", () => resolve(Buffer.concat(chunks))));
 
-  doc.fontSize(18).font("Helvetica-Bold").text(`${MALL_NAME} — Maintenance Report`, { align: "center" });
+  doc.fontSize(18).font("Helvetica-Bold").text(`${MALL_NAME} - Maintenance Report`, { align: "center" });
   doc.fontSize(11).font("Helvetica").fillColor("#555").text(periodLabel(period), { align: "center" });
   doc.moveDown(1.2);
 
@@ -49,7 +49,7 @@ export async function GET(req: NextRequest) {
   doc.moveDown(0.8);
 
   // Widths are proportional weights, scaled to fit the actual printable
-  // width — previously these were fixed points summing to 615pt against
+  // width - previously these were fixed points summing to 615pt against
   // only ~515pt of usable A4 width (with 40pt margins), so the rightmost
   // ~100pt (part of "Paid on" and all of "Collected by") drew past the
   // page edge and got cropped. Scaling keeps the same relative proportions
@@ -91,11 +91,11 @@ export async function GET(req: NextRequest) {
     const values = [
       r.shops.shop_number + " · " + r.shops.name,
       r.shops.floors.name,
-      r.shops.owner_name ?? "—",
+      r.shops.owner_name ?? "-",
       money(r.amount),
       r.status === "paid" ? "Paid" : "Unpaid",
-      r.paid_at ? new Date(r.paid_at).toLocaleDateString("en-US", { day: "numeric", month: "short" }) : "—",
-      r.profiles?.name ?? "—",
+      r.paid_at ? new Date(r.paid_at).toLocaleDateString("en-US", { day: "numeric", month: "short" }) : "-",
+      r.profiles?.name ?? "-",
     ];
     let x = startX;
     for (let i = 0; i < cols.length; i++) {

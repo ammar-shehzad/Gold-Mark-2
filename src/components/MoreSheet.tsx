@@ -18,7 +18,7 @@ export default function MoreSheet({ items, active }: { items: SheetItem[]; activ
         className={"bottom-nav-item" + (isActive ? " on" : "")}
         onClick={() => setOpen(true)}
       >
-        <MenuIcon size={20} />
+        <MenuIcon size={17} />
         <span>More</span>
       </button>
       {open && (

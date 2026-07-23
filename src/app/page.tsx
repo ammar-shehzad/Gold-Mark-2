@@ -127,7 +127,7 @@ export default async function Dashboard({
 
       {(shopCount ?? 0) === 0 && (
         <div className="card">
-          <h2>Welcome — let&apos;s set up your mall</h2>
+          <h2>Welcome - let&apos;s set up your mall</h2>
           <p className="muted">
             Check your floors and fee tiers in <Link href="/setup">Setup</Link>, then{" "}
             <Link href="/shops?new=1">register your first shop</Link>. Monthly invoices are created automatically.
@@ -179,7 +179,7 @@ export default async function Dashboard({
 
       {defaulters.length > 0 && (
         <div className="card">
-          <h2 style={{ color: "var(--danger)" }}>Arrears — old months pending · {money(arrearsTotal)}</h2>
+          <h2 style={{ color: "var(--danger)" }}>Arrears - old months pending · {money(arrearsTotal)}</h2>
           <div className="tablewrap"><table>
             <thead><tr><th>Shop</th><th className="r">Months</th><th className="r">Total due</th></tr></thead>
             <tbody>
@@ -194,7 +194,7 @@ export default async function Dashboard({
           </table></div>
           {defaulters.length > 8 && (
             <p className="muted" style={{ fontSize: 13, marginBottom: 0 }}>
-              and {defaulters.length - 8} more — see Collect page for the full list.
+              and {defaulters.length - 8} more - see Collect page for the full list.
             </p>
           )}
         </div>
@@ -230,7 +230,7 @@ export default async function Dashboard({
                     <td>
                       {r.shops.shop_number} · {r.shops.name}
                       <div className="rowsub">
-                        by {r.profiles?.name ?? "—"} ·{" "}
+                        by {r.profiles?.name ?? "-"} ·{" "}
                         {new Date(r.paid_at!).toLocaleDateString("en-US", { day: "numeric", month: "short" })}
                       </div>
                     </td>

@@ -104,7 +104,7 @@ export default async function CollectPage({
     supabase.from("floors").select("*").order("sort").order("name"),
   ]);
 
-  // filtering happens here, in plain code — reliable regardless of query quirks
+  // filtering happens here, in plain code - reliable regardless of query quirks
   let rows = (rowsRaw ?? []) as unknown as Row[];
   if (show === "due") rows = rows.filter(r => r.status === "unpaid");
   else if (show === "paid") rows = rows.filter(r => r.status === "paid" && r.period === period);
@@ -127,7 +127,7 @@ export default async function CollectPage({
 
   return (
     <AppShell user={user} active="/collect">
-        <h1>Collect — {periodLabel(period)}</h1>
+        <h1>Collect - {periodLabel(period)}</h1>
         {sp.ok === "1" && <div className="flash ok">Payment recorded.</div>}
         {sp.ok === "2" && <div className="flash ok">Payment reverted to unpaid.</div>}
 
@@ -152,7 +152,7 @@ export default async function CollectPage({
         <div className="card">
           {groups.length === 0 ? (
             <p className="muted">
-              {show === "due" ? "Nothing due — everything is collected." : "No invoices match this filter."}
+              {show === "due" ? "Nothing due - everything is collected." : "No invoices match this filter."}
             </p>
           ) : (
             <div className="tablewrap"><table>
@@ -191,7 +191,7 @@ export default async function CollectPage({
                             <div className="rowsub">
                               {r.paid_at &&
                                 new Date(r.paid_at).toLocaleDateString("en-US", { day: "numeric", month: "short" })}
-                              {" · "}{r.profiles?.name ?? "—"}
+                              {" · "}{r.profiles?.name ?? "-"}
                             </div>
                             {user.role === "admin" && (
                               <form action={undoPaid} style={{ display: "inline" }}>
@@ -216,7 +216,7 @@ export default async function CollectPage({
         </div>
         {user.role === "staff" && (
           <p className="muted" style={{ fontSize: 13 }}>
-            You&apos;re on a collector account — record payments here, including old pending months. Totals and reports are visible to the administrator.
+            You&apos;re on a collector account - record payments here, including old pending months. Totals and reports are visible to the administrator.
           </p>
         )}
     </AppShell>

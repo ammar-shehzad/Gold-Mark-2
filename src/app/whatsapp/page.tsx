@@ -146,7 +146,7 @@ export default async function WhatsAppPage({
                   <td className="rowsub">
                     {row.sent_at
                       ? new Date(row.sent_at).toLocaleString("en-US", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" })
-                      : "—"}
+                      : "-"}
                   </td>
                 </tr>
               ))}

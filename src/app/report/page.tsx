@@ -37,7 +37,7 @@ export default async function ReportPage({
     supabase.from("invoices").select("period").order("period", { ascending: false }),
   ]);
 
-  // filtering happens here, in plain code — reliable regardless of query quirks
+  // filtering happens here, in plain code - reliable regardless of query quirks
   let rows = (rowsRaw ?? []) as unknown as Row[];
   if (floorId) rows = rows.filter(r => r.shops.floor_id === floorId);
   if (show !== "all") rows = rows.filter(r => r.status === show);
@@ -121,10 +121,10 @@ export default async function ReportPage({
                       {r.status === "paid" && r.paid_at ? (
                         <>
                           {new Date(r.paid_at).toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" })}
-                          <div className="rowsub">by {r.profiles?.name ?? "—"}</div>
+                          <div className="rowsub">by {r.profiles?.name ?? "-"}</div>
                         </>
                       ) : (
-                        <span className="muted">—</span>
+                        <span className="muted">-</span>
                       )}
                     </td>
                   </tr>

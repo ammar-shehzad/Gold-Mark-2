@@ -13,7 +13,7 @@ export default function BottomNav({ items, active }: { items: NavItem[]; active:
     <nav className="bottom-nav">
       {primary.map(({ href, label, icon: Icon }) => (
         <Link key={href} href={href} className={"bottom-nav-item" + (active === href ? " on" : "")}>
-          <Icon size={20} />
+          <Icon size={17} />
           <span>{label}</span>
         </Link>
       ))}

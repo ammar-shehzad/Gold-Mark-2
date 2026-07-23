@@ -42,7 +42,7 @@ async function submitComplaint(formData: FormData) {
     .single();
   if (error) redirect("/owner/complaints?err=save");
 
-  // Notify the department's staff — uses the service-role client because
+  // Notify the department's staff - uses the service-role client because
   // an owner's own session can't read other users' profiles (RLS), and
   // can't insert into the outbox (staff/admin only).
   const admin = supabaseAdmin();
@@ -60,7 +60,7 @@ async function submitComplaint(formData: FormData) {
     const shopNumber = (complaint?.shops as unknown as { shop_number: string } | null)?.shop_number ?? "";
     const { data: tmpl } = await admin.from("mallpay_whatsapp_templates").select("body").eq("key", "complaint_new").single();
     const message = renderTemplate(
-      tmpl?.body ?? "New {{category}} complaint — Shop {{shop_number}}: {{description}}",
+      tmpl?.body ?? "New {{category}} complaint - Shop {{shop_number}}: {{description}}",
       { category, shop_number: shopNumber, description }
     );
     await admin.from("mallpay_whatsapp_outbox").insert(
@@ -109,14 +109,14 @@ export default async function OwnerComplaintsPage({
     <AppShell user={user} active="/owner/complaints">
       <h1>Complaints</h1>
       {sp.err === "missing" && <div className="flash err">Shop, category, and description are required.</div>}
-      {sp.err === "upload" && <div className="flash err">Could not upload the photo — try again.</div>}
-      {sp.err === "save" && <div className="flash err">Could not save the complaint — try again.</div>}
+      {sp.err === "upload" && <div className="flash err">Could not upload the photo - try again.</div>}
+      {sp.err === "save" && <div className="flash err">Could not save the complaint - try again.</div>}
       {sp.ok === "1" && <div className="flash ok">Complaint submitted.</div>}
 
       <div className="card" style={{ maxWidth: 520, marginTop: 14 }}>
         <h2>New complaint</h2>
         {shops.length === 0 ? (
-          <p className="muted">No shop is linked to your account yet — contact the admin.</p>
+          <p className="muted">No shop is linked to your account yet - contact the admin.</p>
         ) : (
           <form action={submitComplaint}>
             <div className="frow">

@@ -52,13 +52,13 @@ async function sendTargetedMessage(formData: FormData) {
   if (recipients.length === 0) redirect("/whatsapp/send?err=No+matching+owners+have+WhatsApp+notifications+enabled");
 
   // Every recipient shares the exact same scheduled_at, same pattern as
-  // notices — the bot releases the whole batch together.
+  // notices - the bot releases the whole batch together.
   const scheduledAt = new Date(Date.now() + delayMinutes * 60_000).toISOString();
   await supabase.from("mallpay_whatsapp_outbox").insert(
     recipients.map((o) => ({
       to_number: o.whatsapp_number as string,
       message,
-      // Reuses the 'notice' kind — this is the same thing conceptually
+      // Reuses the 'notice' kind - this is the same thing conceptually
       // (an admin-composed broadcast), just recipient-filtered instead of
       // going to every owner. Avoids widening the outbox kind constraint
       // again for what is functionally the same category of message.
@@ -97,7 +97,7 @@ export default async function WhatsappSendPage({
       <div className="card" style={{ maxWidth: 640 }}>
         <form action={sendTargetedMessage}>
           <div className="field">
-            <label>Filter by floor <span className="muted">(optional — leave all unchecked for every floor)</span></label>
+            <label>Filter by floor <span className="muted">(optional - leave all unchecked for every floor)</span></label>
             <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
               {(floors ?? []).map((f) => (
                 <label key={f.id} style={{ fontSize: 14 }}>
@@ -108,7 +108,7 @@ export default async function WhatsappSendPage({
             </div>
           </div>
           <div className="field">
-            <label>Filter by shop <span className="muted">(optional — leave all unchecked for every shop)</span></label>
+            <label>Filter by shop <span className="muted">(optional - leave all unchecked for every shop)</span></label>
             <div className="tablewrap" style={{ maxHeight: 200, overflowY: "auto", border: "1px solid var(--line)", borderRadius: "var(--radius-sm)", padding: 10 }}>
               {(shops ?? []).map((s) => (
                 <label key={s.id} style={{ display: "block", fontSize: 14, marginBottom: 4 }}>

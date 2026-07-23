@@ -146,14 +146,14 @@ export default async function PaymentsPage({
               {withUrls.map((s) => (
                 <tr key={s.id}>
                   <td>{s.invoices.shops.shop_number} · {s.invoices.shops.name}<div className="rowsub">{periodLabel(s.invoices.period)}</div></td>
-                  <td>{s.profiles?.name ?? "—"}</td>
+                  <td>{s.profiles?.name ?? "-"}</td>
                   <td className="num">{money(s.amount)}</td>
-                  <td>{s.transaction_id ?? "—"}</td>
+                  <td>{s.transaction_id ?? "-"}</td>
                   <td>{s.paid_on}</td>
                   <td>
                     {s.signedUrl ? (
                       <a className="btn ghost small" href={s.signedUrl} target="_blank" rel="noreferrer">View</a>
-                    ) : "—"}
+                    ) : "-"}
                   </td>
                   {status === "pending" && (
                     <td className="r">

@@ -8,7 +8,7 @@ import Link from "next/link";
 export const dynamic = "force-dynamic";
 
 // Re-derives a shop's owner_name/owner_phone from whichever owner (if any)
-// is currently linked to it in mallpay_shop_owners — keeps the shops table
+// is currently linked to it in mallpay_shop_owners - keeps the shops table
 // in sync whenever an owner is linked, unlinked, or created.
 async function syncShopOwnerFields(shopId: number) {
   const supabase = await supabaseServer();
@@ -46,7 +46,7 @@ async function createOwner(formData: FormData) {
   // Any throw in here (e.g. supabaseAdmin() failing because the host is
   // missing SUPABASE_SERVICE_ROLE_KEY) surfaces as a readable message on
   // the page instead of a generic crash screen. redirect() must stay
-  // OUTSIDE the try — it works by throwing, and a catch would swallow it.
+  // OUTSIDE the try - it works by throwing, and a catch would swallow it.
   let failMessage: string | null = null;
   try {
     const admin = supabaseAdmin();
@@ -56,7 +56,7 @@ async function createOwner(formData: FormData) {
     if (error || !data.user) {
       failMessage = error?.message
         ? `Could not create the account: ${error.message}`
-        : "Could not create the account — is the email already used?";
+        : "Could not create the account - is the email already used?";
     } else {
       const ownerId = data.user.id;
       await admin.from("profiles").update({ name, role: "owner", whatsapp_number: whatsapp }).eq("id", ownerId);
@@ -179,7 +179,7 @@ export default async function OwnersPage({
       <div className="card">
         <h2>Owner accounts</h2>
         {(owners ?? []).length === 0 ? (
-          <p className="muted">No owner accounts yet — click &quot;+ Create new owner&quot; above.</p>
+          <p className="muted">No owner accounts yet - click &quot;+ Create new owner&quot; above.</p>
         ) : (
           <div className="tablewrap"><table>
             <thead><tr><th>Name</th><th>WhatsApp</th><th>Shops</th><th className="r" /></tr></thead>
@@ -190,7 +190,7 @@ export default async function OwnersPage({
                     {o.name}
                     {!o.active && <> <span className="badge off">disabled</span></>}
                   </td>
-                  <td>{o.whatsapp_number ?? <span className="muted">—</span>}</td>
+                  <td>{o.whatsapp_number ?? <span className="muted">-</span>}</td>
                   <td>
                     {(shopsByOwner.get(o.id) ?? []).map((s) => (
                       <span key={s.id} className="badge off" style={{ marginRight: 6 }}>

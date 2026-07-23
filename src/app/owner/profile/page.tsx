@@ -36,7 +36,7 @@ export default async function OwnerProfilePage({
   return (
     <AppShell user={user} active="/owner/profile">
       <h1>Profile</h1>
-      {sp.err && <div className="flash err">Could not save — try again.</div>}
+      {sp.err && <div className="flash err">Could not save - try again.</div>}
       {sp.ok && <div className="flash ok">Saved.</div>}
 
       <div className="card" style={{ maxWidth: 480, marginTop: 14 }}>

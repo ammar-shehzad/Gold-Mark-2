@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { MALL_NAME } from "@/lib/util";
+import BrandLogo from "@/components/BrandLogo";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -29,9 +29,7 @@ export default function LoginPage() {
   return (
     <div className="login">
       <div className="login-head">
-        <span className="mark">{MALL_NAME.charAt(0).toUpperCase()}</span>
-        <h1 style={{ margin: "6px 0 2px" }}>{MALL_NAME}</h1>
-        <p className="muted" style={{ margin: 0 }}>Maintenance collection</p>
+        <BrandLogo height={150} />
       </div>
       <div className="card">
         {err && <div className="flash err" style={{ margin: "0 0 12px" }}>{err}</div>}

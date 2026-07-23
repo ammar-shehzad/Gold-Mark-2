@@ -3,7 +3,7 @@ import { MALL_NAME } from "@/lib/util";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: MALL_NAME + " — Maintenance",
+    name: MALL_NAME + " - Maintenance",
     short_name: MALL_NAME,
     description: "Mall maintenance collection system",
     start_url: "/",

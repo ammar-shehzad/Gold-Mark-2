@@ -90,7 +90,7 @@ export default async function NoticesPage({
               <option value="180">In 3 hours</option>
             </select>
             <p className="muted" style={{ fontSize: 13, marginTop: 4, marginBottom: 0 }}>
-              Every owner gets the WhatsApp message at exactly this time, together — not one after another.
+              Every owner gets the WhatsApp message at exactly this time, together - not one after another.
             </p>
           </div>
           <button className="btn">Send to all owners</button>
@@ -107,7 +107,7 @@ export default async function NoticesPage({
               {notices.map((n) => (
                 <tr key={n.id}>
                   <td><strong>{n.title}</strong><div className="rowsub">{n.body}</div></td>
-                  <td>{n.profiles?.name ?? "—"}</td>
+                  <td>{n.profiles?.name ?? "-"}</td>
                   <td>{new Date(n.created_at).toLocaleDateString("en-US", { day: "numeric", month: "short" })}</td>
                 </tr>
               ))}

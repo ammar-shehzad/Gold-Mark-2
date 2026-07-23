@@ -22,7 +22,7 @@ async function saveShop(formData: FormData) {
     active: formData.get("active") === "on",
   };
   if (!id) {
-    // New shops start with no owner — owner name/phone are only ever set
+    // New shops start with no owner - owner name/phone are only ever set
     // by linking an owner account from the Owners page.
     row.owner_name = "No Owner";
     row.owner_phone = null;
@@ -76,7 +76,7 @@ export default async function ShopsPage({
   return (
     <AppShell user={user} active="/shops">
         <h1>{showForm ? (editing ? "Edit shop" : "Register shop") : "Shops"}</h1>
-        {sp.err === "duplicate" && <div className="flash err">That shop number already exists — use a different one.</div>}
+        {sp.err === "duplicate" && <div className="flash err">That shop number already exists - use a different one.</div>}
         {sp.err === "missing" && <div className="flash err">Shop number, name, floor, and a monthly fee above zero are required.</div>}
         {sp.ok && <div className="flash ok">Shop saved.</div>}
 
@@ -105,7 +105,7 @@ export default async function ShopsPage({
               {editing && (
                 <p className="muted" style={{ fontSize: 13 }}>
                   Owner: {String(editing.owner_name ?? "No Owner") === "No Owner"
-                    ? "No owner — link one from the Owners page"
+                    ? "No owner - link one from the Owners page"
                     : `${editing.owner_name}${editing.owner_phone ? ` · ${editing.owner_phone}` : ""}`}
                 </p>
               )}
@@ -167,7 +167,7 @@ export default async function ShopsPage({
                         </td>
                         <td>{(s.floors as { name: string }).name}</td>
                         <td>
-                          {occupied ? ownerName : "—"}
+                          {occupied ? ownerName : "-"}
                           {Boolean(s.owner_phone) && <div className="rowsub">{String(s.owner_phone)}</div>}
                         </td>
                         <td>

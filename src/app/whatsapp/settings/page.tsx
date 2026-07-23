@@ -149,7 +149,7 @@ export default async function WhatsappSettingsPage({
         <h1>WhatsApp settings</h1>
         <div className="card">
           <p className="muted">
-            Settings haven&apos;t been set up yet — run <code>supabase/migration-whatsapp-automation.sql</code> in the
+            Settings haven&apos;t been set up yet - run <code>supabase/migration-whatsapp-automation.sql</code> in the
             Supabase SQL Editor, then reload this page.
           </p>
         </div>
@@ -174,7 +174,7 @@ export default async function WhatsappSettingsPage({
           {settings.queue_state === "running" && <span className="badge paid">Running</span>}
           {settings.queue_state === "paused" && <span className="badge pending">Paused</span>}
           {settings.queue_state === "disabled" && <span className="badge unpaid">Disabled</span>}
-          {" "}— only affects automated maintenance reminders. Payment confirmations, complaint updates, and manual
+          {" "}- only affects automated maintenance reminders. Payment confirmations, complaint updates, and manual
           notices always keep sending regardless of this state.
         </p>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -242,11 +242,11 @@ export default async function WhatsappSettingsPage({
             </div>
             <div className="frow">
               <div className="field">
-                <label>Sending hour — start <span className="muted">(0–23)</span></label>
+                <label>Sending hour - start <span className="muted">(0–23)</span></label>
                 <input type="number" name="sending_hour_start" min={0} max={23} defaultValue={settings.sending_hour_start} />
               </div>
               <div className="field">
-                <label>Sending hour — end <span className="muted">(0–23)</span></label>
+                <label>Sending hour - end <span className="muted">(0–23)</span></label>
                 <input type="number" name="sending_hour_end" min={0} max={23} defaultValue={settings.sending_hour_end} />
               </div>
             </div>
@@ -263,11 +263,11 @@ export default async function WhatsappSettingsPage({
         <form action={saveRateLimits}>
           <div className="frow">
             <div className="field">
-              <label>Delay between messages — min <span className="muted">(seconds)</span></label>
+              <label>Delay between messages - min <span className="muted">(seconds)</span></label>
               <input type="number" name="delay_min_seconds" min={0} defaultValue={settings.delay_min_seconds} />
             </div>
             <div className="field">
-              <label>Delay between messages — max <span className="muted">(seconds)</span></label>
+              <label>Delay between messages - max <span className="muted">(seconds)</span></label>
               <input type="number" name="delay_max_seconds" min={0} defaultValue={settings.delay_max_seconds} />
             </div>
           </div>
@@ -292,7 +292,7 @@ export default async function WhatsappSettingsPage({
       <div className="card">
         <h2>Message templates</h2>
         <p className="muted" style={{ marginTop: 0, fontSize: 13 }}>
-          Available placeholders vary by template — shop/period/amount/date tokens for reminders and payments,
+          Available placeholders vary by template - shop/period/amount/date tokens for reminders and payments,
           {" "}<code>{"{{title}}"}</code>/<code>{"{{body}}"}</code> for notices.
         </p>
         {templates.map((t) => (

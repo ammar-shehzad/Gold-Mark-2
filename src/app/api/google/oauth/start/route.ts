@@ -4,7 +4,7 @@ import { getOAuthClient } from "@/lib/googleSheets";
 
 // Route Handlers aren't part of the App Router render pipeline, so
 // next/navigation's redirect() (used by lib/auth.ts's requireAdmin())
-// doesn't work here — same reason report/pdf and report/csv's route
+// doesn't work here - same reason report/pdf and report/csv's route
 // handlers do their own manual auth check instead of using it.
 export async function GET(req: NextRequest) {
   const supabase = await supabaseServer();
