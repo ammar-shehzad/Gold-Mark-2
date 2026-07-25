@@ -4,6 +4,7 @@ import { WidgetCard } from "@/components/WidgetCard";
 import { DonutChart } from "@/components/charts/DonutChart";
 import { LineChart } from "@/components/charts/LineChart";
 import { ShopIcon, MoneyIcon, ClockIcon, CheckIcon } from "@/components/icons";
+import MonthDayFilter from "@/components/MonthDayFilter";
 import { requireUser } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { money, currentPeriod, periodLabel } from "@/lib/util";
@@ -36,14 +37,15 @@ function shortMonth(p: string): string {
 export default async function Dashboard({
   searchParams,
 }: {
-  searchParams: Promise<{ period?: string }>;
+  searchParams: Promise<{ period?: string; day?: string }>;
 }) {
   const user = await requireUser();
   if (user.role === "staff") redirect(user.staff_type === "department" ? "/complaints" : "/collector");
   if (user.role === "owner") redirect("/owner");
 
   const sp = await searchParams;
-  const period = /^\d{4}-\d{2}$/.test(sp.period ?? "") ? sp.period! : currentPeriod();
+  const day = /^\d{4}-\d{2}-\d{2}$/.test(sp.day ?? "") ? sp.day! : "";
+  const period = day ? day.slice(0, 7) : (/^\d{4}-\d{2}$/.test(sp.period ?? "") ? sp.period! : currentPeriod());
   const supabase = await supabaseServer();
 
   if (period === currentPeriod()) {
@@ -51,8 +53,11 @@ export default async function Dashboard({
   }
 
   const trendPeriods = lastPeriods(6);
+  // day range (local) for "collected on this exact date"
+  const dayStart = day ? new Date(day + "T00:00:00") : null;
+  const dayEnd = day ? new Date(day + "T23:59:59.999") : null;
 
-  const [{ data: invoices }, { count: shopCount }, { data: arrearsRaw }, { data: trendRaw }] = await Promise.all([
+  const [{ data: invoices }, { count: shopCount }, { data: arrearsRaw }, { data: trendRaw }, { data: expRows }, { data: recentExp }, { data: dayColl }] = await Promise.all([
     supabase
       .from("invoices")
       .select("amount,status,paid_at,period,shops(shop_number,name,floors(name,sort)),profiles:collected_by(name)")
@@ -64,7 +69,20 @@ export default async function Dashboard({
       .eq("status", "unpaid")
       .lt("period", currentPeriod()),
     supabase.from("invoices").select("amount,period").in("period", trendPeriods),
+    // expenses spent within the viewed month (for the net figure)
+    supabase.from("mallpay_expenses").select("amount,spent_on").gte("spent_on", `${period}-01`).lte("spent_on", `${period}-31`),
+    // latest expense records for the "Recent expenses" widget
+    supabase.from("mallpay_expenses").select("spent_on,category,description,amount,profiles_added:added_by(name),profiles_paid:paid_to(name)").order("spent_on", { ascending: false }).order("id", { ascending: false }).limit(8),
+    // collections made on the specific chosen day (any period)
+    day
+      ? supabase.from("invoices").select("amount,period,paid_at,shops(shop_number,name),profiles:collected_by(name)").eq("status", "paid").gte("paid_at", dayStart!.toISOString()).lte("paid_at", dayEnd!.toISOString()).order("paid_at", { ascending: false })
+      : Promise.resolve({ data: [] as unknown[] }),
   ]);
+
+  const expensesTotal = (expRows ?? []).reduce((s, e) => s + Number(e.amount), 0);
+  type DayColl = { amount: number; period: string; paid_at: string | null; shops: { shop_number: string; name: string }; profiles: { name: string } | null };
+  const dayCollections = (dayColl ?? []) as unknown as DayColl[];
+  const dayTotal = dayCollections.reduce((s, r) => s + Number(r.amount), 0);
 
   type Arr = { amount: number; period: string; shops: { shop_number: string; name: string } };
   const arrearsByShop = new Map<string, { name: string; total: number; months: number }>();
@@ -83,6 +101,7 @@ export default async function Dashboard({
   const paidCount = rows.filter(r => r.status === "paid").length;
   const grand = collected + pending;
   const pct = grand > 0 ? Math.round((collected / grand) * 100) : 0;
+  const net = collected - expensesTotal;
 
   const byFloor = new Map<string, { total: number; paid: number; due: number; sort: number }>();
   for (const r of rows) {
@@ -108,15 +127,43 @@ export default async function Dashboard({
 
   return (
     <AppShell user={user} active="/">
-      <div className="filters">
-        <form method="get" className="filters" style={{ margin: 0 }} key={period}>
-          <input type="month" name="period" defaultValue={period} title="Pick any month — including a future month to see advance payments" />
+      <div className="filters" style={{ alignItems: "flex-end" }}>
+        <form method="get" className="filters" style={{ margin: 0, alignItems: "flex-end" }} key={`${period}-${day}`}>
+          <MonthDayFilter period={period} day={day} />
           <button className="btn ghost" type="submit">View</button>
         </form>
+        {day && <Link className="btn ghost" href="/">Clear day</Link>}
         <Link className="btn ghost" href="/shops?new=1" style={{ marginLeft: "auto" }}>
           + Register shop
         </Link>
       </div>
+
+      {day && (
+        <div className="card" style={{ borderColor: "var(--accent)" }}>
+          <div className="widget-head">
+            <h2>Collected on {new Date(day + "T12:00:00").toLocaleDateString("en-US", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</h2>
+            <span className="kpi-value" style={{ marginLeft: "auto", color: "var(--success)" }}>{money(dayTotal)}</span>
+          </div>
+          {dayCollections.length === 0 ? (
+            <p className="muted">No collections were recorded on this date.</p>
+          ) : (
+            <div className="tablewrap fit"><table>
+              <thead><tr><th>Shop</th><th>For month</th><th>Time</th><th>Collector</th><th className="r">Amount</th></tr></thead>
+              <tbody>
+                {dayCollections.map((r, i) => (
+                  <tr key={i}>
+                    <td><strong>{r.shops.shop_number}</strong> · {r.shops.name}</td>
+                    <td>{periodLabel(r.period)}</td>
+                    <td className="num">{r.paid_at ? new Date(r.paid_at).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }) : "-"}</td>
+                    <td>{r.profiles?.name ?? "-"}</td>
+                    <td className="r"><span className="badge paid num">{money(r.amount)}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table></div>
+          )}
+        </div>
+      )}
 
       {(shopCount ?? 0) === 0 && (
         <div className="card">
@@ -129,9 +176,13 @@ export default async function Dashboard({
       )}
 
       <div className="grid c4">
-        <KpiCard label="Active shops" value={String(shopCount ?? 0)} icon={<ShopIcon />} />
         <KpiCard label={`Collected · ${periodLabel(period)}`} value={money(collected)} icon={<MoneyIcon />} tone="hero" />
+        <KpiCard label={`Expenses · ${periodLabel(period)}`} value={money(expensesTotal)} icon={<ClockIcon />} tone="bad" />
+        <KpiCard label="Net (collected − expenses)" value={money(net)} icon={<CheckIcon />} tone={net >= 0 ? "good" : "bad"} />
         <KpiCard label="Pending" value={money(pending)} icon={<ClockIcon />} tone="bad" />
+      </div>
+      <div className="grid c2" style={{ marginTop: -4 }}>
+        <KpiCard label="Active shops" value={String(shopCount ?? 0)} icon={<ShopIcon />} />
         <KpiCard label="Shops paid" value={`${paidCount} / ${rows.length}`} icon={<CheckIcon />} />
       </div>
 
@@ -233,6 +284,41 @@ export default async function Dashboard({
               </tbody>
             </table></div>
           )}
+        </WidgetCard>
+      </div>
+
+      <div className="grid c2">
+        <WidgetCard title="Recent expenses & salaries">
+          {(recentExp ?? []).length === 0 ? (
+            <p className="muted">No expenses recorded yet.</p>
+          ) : (
+            <div className="tablewrap fit"><table>
+              <tbody>
+                {((recentExp ?? []) as unknown as { spent_on: string; category: string; description: string; amount: number; profiles_added: { name: string } | null; profiles_paid: { name: string } | null }[]).map((e, i) => (
+                  <tr key={i}>
+                    <td>
+                      {e.category === "Staff Salaries" ? <span className="badge paid">Salary</span> : <strong>{e.category}</strong>}{" "}
+                      {e.profiles_paid ? `to ${e.profiles_paid.name}` : e.description}
+                      <div className="rowsub">
+                        {new Date(e.spent_on + "T12:00:00").toLocaleDateString("en-US", { day: "numeric", month: "short" })}
+                        {e.profiles_added ? ` · by ${e.profiles_added.name}` : ""}
+                      </div>
+                    </td>
+                    <td className="r"><span className="badge unpaid num">− {money(e.amount)}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table></div>
+          )}
+        </WidgetCard>
+        <WidgetCard title={`Net for ${periodLabel(period)}`}>
+          <div className="donut-legend" style={{ fontSize: 15 }}>
+            <div className="donut-legend-item"><span className="donut-legend-dot" style={{ background: "var(--success)" }} />Collected<span className="num" style={{ marginLeft: "auto" }}>{money(collected)}</span></div>
+            <div className="donut-legend-item"><span className="donut-legend-dot" style={{ background: "var(--danger)" }} />Expenses<span className="num" style={{ marginLeft: "auto" }}>− {money(expensesTotal)}</span></div>
+            <div className="donut-legend-item" style={{ borderTop: "1px solid var(--line)", paddingTop: 8, marginTop: 4, fontWeight: 700 }}>
+              Net income<span className="num" style={{ marginLeft: "auto", color: net >= 0 ? "var(--success)" : "var(--danger)" }}>{money(net)}</span>
+            </div>
+          </div>
         </WidgetCard>
       </div>
     </AppShell>

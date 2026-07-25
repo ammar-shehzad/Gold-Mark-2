@@ -2,6 +2,7 @@ import AppShell from "@/components/AppShell";
 import PendingButton from "@/components/PendingButton";
 import ConfirmButton from "@/components/ConfirmButton";
 import BulkCollectPanel from "@/components/BulkCollectPanel";
+import MonthDayFilter from "@/components/MonthDayFilter";
 import { requireStaff } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -229,15 +230,12 @@ export default async function CollectPage({
 
       <div className="filters" style={{ marginTop: 6, alignItems: "flex-end" }}>
         <form method="get" className="filters" style={{ margin: 0, alignItems: "flex-end" }} key={`${period}-${day}-${floorId}-${show}-${sp.q ?? ""}`}>
-          <span className="filter-field"><label>Month</label><input type="month" name="period" defaultValue={period} title="Any month — past, current, or future (advance)" /></span>
-          <span className="filter-field"><label>Or a specific day</label><input type="date" name="day" defaultValue={day} title="Show only collections made on this date" /></span>
-          {!day && (
-            <select name="show" defaultValue={show}>
-              <option value="pending">Pending only</option>
-              <option value="paid">Paid only</option>
-              <option value="all">All shops</option>
-            </select>
-          )}
+          <MonthDayFilter period={period} day={day} />
+          <select name="show" defaultValue={show} disabled={!!day} title={day ? "Cleared while a specific day is selected" : undefined}>
+            <option value="pending">Pending only</option>
+            <option value="paid">Paid only</option>
+            <option value="all">All shops</option>
+          </select>
           <select name="floor" defaultValue={floorId ? String(floorId) : ""}>
             <option value="">All floors</option>
             {(floors ?? []).map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}
