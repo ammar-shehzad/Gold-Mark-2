@@ -112,15 +112,12 @@ export default async function AdminComplaintsPage({
           <p className="muted">No complaints match this filter.</p>
         ) : (
           <div className="tablewrap"><table>
-            <thead><tr><th>Shop</th><th>Category</th><th>Description</th><th>Owner</th><th className="r">Status</th></tr></thead>
+            <thead><tr><th>Shop</th><th>Update status</th><th>Category</th><th>Description</th><th>Owner</th></tr></thead>
             <tbody>
               {complaints.map((c) => (
                 <tr key={c.id}>
                   <td>{c.shops.shop_number} · {c.shops.name}</td>
-                  <td>{c.category}</td>
-                  <td style={{ maxWidth: 260 }}>{c.description}</td>
-                  <td>{c.profiles?.name ?? "-"}</td>
-                  <td className="r">
+                  <td>
                     <form action={updateComplaintStatus}>
                       <input type="hidden" name="id" value={c.id} />
                       <select name="status" defaultValue={c.status} style={{ width: "auto", marginBottom: 4 }}>
@@ -134,6 +131,9 @@ export default async function AdminComplaintsPage({
                       <button className="btn ghost small">Update</button>
                     </form>
                   </td>
+                  <td>{c.category}</td>
+                  <td style={{ maxWidth: 260 }}>{c.description}</td>
+                  <td>{c.profiles?.name ?? "-"}</td>
                 </tr>
               ))}
             </tbody>

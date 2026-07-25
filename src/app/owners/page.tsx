@@ -207,13 +207,30 @@ export default async function OwnersPage({
           <p className="muted">No owner accounts yet - click &quot;+ Create new owner&quot; above.</p>
         ) : (
           <div className="tablewrap"><table>
-            <thead><tr><th>Name</th><th>WhatsApp</th><th>Shops</th><th className="r" /></tr></thead>
+            <thead><tr><th>Name</th><th>Actions</th><th>WhatsApp</th><th>Shops</th></tr></thead>
             <tbody>
               {(owners as OwnerProfile[] ?? []).map((o) => (
                 <tr key={o.id}>
                   <td>
                     {o.name}
                     {!o.active && <> <span className="badge off">disabled</span></>}
+                  </td>
+                  <td>
+                    <span className="row-actions">
+                      <form action={toggleOwner} style={{ display: "inline" }}>
+                        <input type="hidden" name="id" value={o.id} />
+                        <button className="btn ghost small">{o.active ? "Disable" : "Enable"}</button>
+                      </form>
+                      <form action={deleteOwner} style={{ display: "inline" }}>
+                        <input type="hidden" name="id" value={o.id} />
+                        <ConfirmButton
+                          className="btn ghost small"
+                          message={`Delete owner ${o.name}? Their login, complaints, and payment submissions are removed and their shops become vacant. This cannot be undone.`}
+                        >
+                          Delete
+                        </ConfirmButton>
+                      </form>
+                    </span>
                   </td>
                   <td>{o.whatsapp_number ?? <span className="muted">-</span>}</td>
                   <td>
@@ -235,21 +252,6 @@ export default async function OwnersPage({
                         ))}
                       </select>
                       <button className="btn ghost small">+ Link</button>
-                    </form>
-                  </td>
-                  <td className="r">
-                    <form action={toggleOwner} style={{ display: "inline" }}>
-                      <input type="hidden" name="id" value={o.id} />
-                      <button className="btn ghost small">{o.active ? "Disable" : "Enable"}</button>
-                    </form>{" "}
-                    <form action={deleteOwner} style={{ display: "inline" }}>
-                      <input type="hidden" name="id" value={o.id} />
-                      <ConfirmButton
-                        className="btn ghost small"
-                        message={`Delete owner ${o.name}? Their login, complaints, and payment submissions are removed and their shops become vacant. This cannot be undone.`}
-                      >
-                        Delete
-                      </ConfirmButton>
                     </form>
                   </td>
                 </tr>

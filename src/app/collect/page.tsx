@@ -156,7 +156,7 @@ export default async function CollectPage({
             </p>
           ) : (
             <div className="tablewrap"><table>
-              <thead><tr><th>Shop</th><th>Month</th><th className="r">Amount</th><th className="r">Status</th></tr></thead>
+              <thead><tr><th>Shop</th><th>Action</th><th>Month</th><th className="r">Amount</th><th className="r">Status</th></tr></thead>
               <tbody>
                 {groups.map(([shopNo, list]) => {
                   const due = list.filter(r => r.status === "unpaid");
@@ -178,6 +178,21 @@ export default async function CollectPage({
                         </td>
                       ) : null}
                       <td>
+                        {r.status === "paid" ? (
+                          user.role === "admin" ? (
+                            <form action={undoPaid} style={{ display: "inline" }}>
+                              <input type="hidden" name="invoice_id" value={r.id} />
+                              <button className="btn ghost small">Undo</button>
+                            </form>
+                          ) : <span className="muted">-</span>
+                        ) : (
+                          <form action={markPaid} style={{ display: "inline" }}>
+                            <input type="hidden" name="invoice_id" value={r.id} />
+                            <button className="btn small">Mark collected</button>
+                          </form>
+                        )}
+                      </td>
+                      <td>
                         {periodLabel(r.period)}
                         {r.period < period && r.status === "unpaid" && (
                           <> <span className="badge unpaid">overdue</span></>
@@ -193,18 +208,9 @@ export default async function CollectPage({
                                 new Date(r.paid_at).toLocaleDateString("en-US", { day: "numeric", month: "short" })}
                               {" · "}{r.profiles?.name ?? "-"}
                             </div>
-                            {user.role === "admin" && (
-                              <form action={undoPaid} style={{ display: "inline" }}>
-                                <input type="hidden" name="invoice_id" value={r.id} />
-                                <button className="btn ghost small">Undo</button>
-                              </form>
-                            )}
                           </>
                         ) : (
-                          <form action={markPaid} style={{ display: "inline" }}>
-                            <input type="hidden" name="invoice_id" value={r.id} />
-                            <button className="btn small">Mark collected</button>
-                          </form>
+                          <span className="badge unpaid">Unpaid</span>
                         )}
                       </td>
                     </tr>

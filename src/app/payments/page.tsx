@@ -140,12 +140,26 @@ export default async function PaymentsPage({
         ) : (
           <div className="tablewrap"><table>
             <thead>
-              <tr><th>Shop</th><th>Owner</th><th>Amount</th><th>Txn ID</th><th>Paid on</th><th>Screenshot</th>{status === "pending" && <th className="r">Actions</th>}</tr>
+              <tr><th>Shop</th>{status === "pending" && <th>Actions</th>}<th>Owner</th><th>Amount</th><th>Txn ID</th><th>Paid on</th><th>Screenshot</th></tr>
             </thead>
             <tbody>
               {withUrls.map((s) => (
                 <tr key={s.id}>
                   <td>{s.invoices.shops.shop_number} · {s.invoices.shops.name}<div className="rowsub">{periodLabel(s.invoices.period)}</div></td>
+                  {status === "pending" && (
+                    <td>
+                      <span className="row-actions">
+                        <form action={approvePayment} style={{ display: "inline" }}>
+                          <input type="hidden" name="id" value={s.id} />
+                          <button className="btn small">Payment received</button>
+                        </form>
+                        <form action={rejectPayment} style={{ display: "inline" }}>
+                          <input type="hidden" name="id" value={s.id} />
+                          <button className="btn ghost small">Not received</button>
+                        </form>
+                      </span>
+                    </td>
+                  )}
                   <td>{s.profiles?.name ?? "-"}</td>
                   <td className="num">{money(s.amount)}</td>
                   <td>{s.transaction_id ?? "-"}</td>
@@ -155,18 +169,6 @@ export default async function PaymentsPage({
                       <a className="btn ghost small" href={s.signedUrl} target="_blank" rel="noreferrer">View</a>
                     ) : "-"}
                   </td>
-                  {status === "pending" && (
-                    <td className="r">
-                      <form action={approvePayment} style={{ display: "inline" }}>
-                        <input type="hidden" name="id" value={s.id} />
-                        <button className="btn small">Payment received</button>
-                      </form>{" "}
-                      <form action={rejectPayment} style={{ display: "inline" }}>
-                        <input type="hidden" name="id" value={s.id} />
-                        <button className="btn ghost small">Not received</button>
-                      </form>
-                    </td>
-                  )}
                 </tr>
               ))}
             </tbody>

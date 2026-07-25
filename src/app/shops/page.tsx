@@ -183,7 +183,7 @@ export default async function ShopsPage({
               ) : (
                 <div className="tablewrap"><table>
                   <thead>
-                    <tr><th>Shop</th><th>Floor</th><th>Owner</th><th>Status</th><th className="r">Monthly fee</th><th /></tr>
+                    <tr><th>Shop</th><th>Actions</th><th>Floor</th><th>Owner</th><th>Status</th><th className="r">Monthly fee</th></tr>
                   </thead>
                   <tbody>
                     {shops.map(s => {
@@ -196,6 +196,20 @@ export default async function ShopsPage({
                           {!s.active && <> <span className="badge off">inactive</span></>}
                           {s.size_sqft != null && <div className="rowsub">{Number(s.size_sqft)} sq ft</div>}
                         </td>
+                        <td>
+                          <span className="row-actions">
+                            <Link className="btn ghost small" href={`/shops?edit=${s.id}`}>Edit</Link>
+                            <form action={deleteShop} style={{ display: "inline" }}>
+                              <input type="hidden" name="id" value={String(s.id)} />
+                              <ConfirmButton
+                                className="btn ghost small"
+                                message={`Delete shop ${String(s.shop_number)}? This also deletes its invoices, payment history, and complaints. This cannot be undone.`}
+                              >
+                                Delete
+                              </ConfirmButton>
+                            </form>
+                          </span>
+                        </td>
                         <td>{(s.floors as { name: string }).name}</td>
                         <td>
                           {occupied ? ownerName : "-"}
@@ -205,18 +219,6 @@ export default async function ShopsPage({
                           {occupied ? <span className="badge paid">Active</span> : <span className="badge off">Vacant</span>}
                         </td>
                         <td className="r num">{money(Number(s.custom_fee ?? 0))}</td>
-                        <td className="r">
-                          <Link className="btn ghost small" href={`/shops?edit=${s.id}`}>Edit</Link>{" "}
-                          <form action={deleteShop} style={{ display: "inline" }}>
-                            <input type="hidden" name="id" value={String(s.id)} />
-                            <ConfirmButton
-                              className="btn ghost small"
-                              message={`Delete shop ${String(s.shop_number)}? This also deletes its invoices, payment history, and complaints. This cannot be undone.`}
-                            >
-                              Delete
-                            </ConfirmButton>
-                          </form>
-                        </td>
                       </tr>
                       );
                     })}
