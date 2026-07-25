@@ -178,19 +178,21 @@ export default async function CollectPage({
                         </td>
                       ) : null}
                       <td>
-                        {r.status === "paid" ? (
-                          user.role === "admin" ? (
-                            <form action={undoPaid} style={{ display: "inline" }}>
+                        <span className="row-actions">
+                          {r.status === "paid" ? (
+                            user.role === "admin" ? (
+                              <form action={undoPaid} style={{ display: "inline" }}>
+                                <input type="hidden" name="invoice_id" value={r.id} />
+                                <button className="btn ghost small">Undo</button>
+                              </form>
+                            ) : <span className="muted">-</span>
+                          ) : (
+                            <form action={markPaid} style={{ display: "inline" }}>
                               <input type="hidden" name="invoice_id" value={r.id} />
-                              <button className="btn ghost small">Undo</button>
+                              <button className="btn small">Mark collected</button>
                             </form>
-                          ) : <span className="muted">-</span>
-                        ) : (
-                          <form action={markPaid} style={{ display: "inline" }}>
-                            <input type="hidden" name="invoice_id" value={r.id} />
-                            <button className="btn small">Mark collected</button>
-                          </form>
-                        )}
+                          )}
+                        </span>
                       </td>
                       <td>
                         {periodLabel(r.period)}
