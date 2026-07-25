@@ -180,7 +180,7 @@ export default async function Dashboard({
       {defaulters.length > 0 && (
         <div className="card">
           <h2 style={{ color: "var(--danger)" }}>Arrears - old months pending · {money(arrearsTotal)}</h2>
-          <div className="tablewrap"><table>
+          <div className="tablewrap fit"><table>
             <thead><tr><th>Shop</th><th className="r">Months</th><th className="r">Total due</th></tr></thead>
             <tbody>
               {defaulters.slice(0, 8).map(([no, d]) => (
@@ -205,7 +205,7 @@ export default async function Dashboard({
           {floors.length === 0 ? (
             <p className="muted">No invoices for this month yet.</p>
           ) : (
-            <div className="tablewrap"><table>
+            <div className="tablewrap fit"><table>
               <thead><tr><th>Floor</th><th className="r">Paid</th><th className="r">Amount due</th></tr></thead>
               <tbody>
                 {floors.map(([name, f]) => (
@@ -223,7 +223,7 @@ export default async function Dashboard({
           {recent.length === 0 ? (
             <p className="muted">No payments recorded yet this month.</p>
           ) : (
-            <div className="tablewrap"><table>
+            <div className="tablewrap fit"><table>
               <tbody>
                 {recent.map((r, i) => (
                   <tr key={i}>
