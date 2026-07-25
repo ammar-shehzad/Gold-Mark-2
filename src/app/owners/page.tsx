@@ -1,5 +1,6 @@
 import AppShell from "@/components/AppShell";
 import ConfirmButton from "@/components/ConfirmButton";
+import PendingButton from "@/components/PendingButton";
 import { requireAdmin } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -219,7 +220,7 @@ export default async function OwnersPage({
                     <span className="row-actions">
                       <form action={toggleOwner} style={{ display: "inline" }}>
                         <input type="hidden" name="id" value={o.id} />
-                        <button className="btn ghost small">{o.active ? "Disable" : "Enable"}</button>
+                        <PendingButton className="btn ghost small" pendingText="Saving…">{o.active ? "Disable" : "Enable"}</PendingButton>
                       </form>
                       <form action={deleteOwner} style={{ display: "inline" }}>
                         <input type="hidden" name="id" value={o.id} />

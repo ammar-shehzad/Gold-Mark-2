@@ -1,4 +1,5 @@
 import AppShell from "@/components/AppShell";
+import PendingButton from "@/components/PendingButton";
 import { requireStaff } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -183,13 +184,13 @@ export default async function CollectPage({
                             user.role === "admin" ? (
                               <form action={undoPaid} style={{ display: "inline" }}>
                                 <input type="hidden" name="invoice_id" value={r.id} />
-                                <button className="btn ghost small">Undo</button>
+                                <PendingButton className="btn ghost small" pendingText="Undoing…">Undo</PendingButton>
                               </form>
                             ) : <span className="muted">-</span>
                           ) : (
                             <form action={markPaid} style={{ display: "inline" }}>
                               <input type="hidden" name="invoice_id" value={r.id} />
-                              <button className="btn small">Mark collected</button>
+                              <PendingButton className="btn small" pendingText="Collecting…">Mark collected</PendingButton>
                             </form>
                           )}
                         </span>

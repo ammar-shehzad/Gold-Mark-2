@@ -1,5 +1,6 @@
 import AppShell from "@/components/AppShell";
 import ConfirmButton from "@/components/ConfirmButton";
+import PendingButton from "@/components/PendingButton";
 import { requireAdmin } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -213,7 +214,7 @@ export default async function SetupPage({
       <span className="row-actions">
         <form action={toggleUser} style={{ display: "inline" }}>
           <input type="hidden" name="id" value={x.id} />
-          <button className="btn ghost small">{x.active ? "Disable" : "Enable"}</button>
+          <PendingButton className="btn ghost small" pendingText="Saving…">{x.active ? "Disable" : "Enable"}</PendingButton>
         </form>
         <form action={deleteUser} style={{ display: "inline" }}>
           <input type="hidden" name="id" value={x.id} />

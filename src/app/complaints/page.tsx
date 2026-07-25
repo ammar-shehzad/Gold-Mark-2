@@ -1,4 +1,5 @@
 import AppShell from "@/components/AppShell";
+import PendingButton from "@/components/PendingButton";
 import { requireStaff } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { renderTemplate } from "@/lib/template";
@@ -128,7 +129,7 @@ export default async function AdminComplaintsPage({
                       <br />
                       <input type="text" name="admin_note" defaultValue={c.admin_note ?? ""} placeholder="Note (optional)" style={{ width: 160, marginBottom: 4 }} />
                       <br />
-                      <button className="btn ghost small">Update</button>
+                      <PendingButton className="btn ghost small" pendingText="Updating…">Update</PendingButton>
                     </form>
                   </td>
                   <td>{c.category}</td>

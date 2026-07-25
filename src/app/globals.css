@@ -134,6 +134,20 @@ input:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(-
 .row-actions form{display:block}
 .row-actions .btn,.row-actions .btn.small{
   width:100%;padding:6px 12px;font-size:12.5px;white-space:nowrap;text-align:center;line-height:1.35}
+
+/* ---- button feedback: press animation + in-flight spinner ---- */
+.btn:active,.icon-btn:active{transform:scale(.95)}
+.btn{transition:filter var(--transition-fast),transform .08s var(--ease)}
+.btn[aria-busy="true"],.btn[disabled]{cursor:progress;opacity:.8}
+.btn-spin-wrap{display:inline-flex;align-items:center;gap:6px;justify-content:center}
+.btn-spinner{width:12px;height:12px;flex:0 0 12px;border-radius:50%;
+  border:2px solid currentColor;border-top-color:transparent;display:inline-block;
+  animation:btn-spin .6s linear infinite}
+@keyframes btn-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){
+  .btn:active,.icon-btn:active{transform:none}
+  .btn-spinner{animation-duration:1.6s}
+}
 @media (max-width:768px){
   .grid.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grid.c2{grid-template-columns:minmax(0,1fr)}

@@ -1,4 +1,5 @@
 import AppShell from "@/components/AppShell";
+import PendingButton from "@/components/PendingButton";
 import { requireAdmin } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
 import { money, periodLabel } from "@/lib/util";
@@ -151,11 +152,11 @@ export default async function PaymentsPage({
                       <span className="row-actions">
                         <form action={approvePayment} style={{ display: "inline" }}>
                           <input type="hidden" name="id" value={s.id} />
-                          <button className="btn small">Payment received</button>
+                          <PendingButton className="btn small" pendingText="Saving…">Payment received</PendingButton>
                         </form>
                         <form action={rejectPayment} style={{ display: "inline" }}>
                           <input type="hidden" name="id" value={s.id} />
-                          <button className="btn ghost small">Not received</button>
+                          <PendingButton className="btn ghost small" pendingText="Saving…">Not received</PendingButton>
                         </form>
                       </span>
                     </td>
