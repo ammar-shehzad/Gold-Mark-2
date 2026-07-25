@@ -1,10 +1,12 @@
 import AppShell from "@/components/AppShell";
 import { requireStaff } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import { money, currentPeriod, periodLabel } from "@/lib/util";
 import { cancelPendingReminders } from "@/lib/reminders";
 import { renderTemplate } from "@/lib/template";
 import { redirect } from "next/navigation";
+import { after } from "next/server";
 
 export const dynamic = "force-dynamic";
 
@@ -14,49 +16,47 @@ async function markPaid(formData: FormData) {
   const supabase = await supabaseServer();
   const invoiceId = Number(formData.get("invoice_id"));
 
-  const { data: invoice } = await supabase
-    .from("invoices")
-    .select("period,amount,shop_id,shops(shop_number)")
-    .eq("id", invoiceId)
-    .single();
-
+  // Critical path only: flip the invoice to paid, then respond immediately.
+  // The collector waits on exactly ONE database round-trip now (this one).
   await supabase
     .from("invoices")
     .update({ status: "paid", paid_at: new Date().toISOString(), collected_by: user.id })
     .eq("id", invoiceId)
     .eq("status", "unpaid");
-  await cancelPendingReminders(invoiceId);
 
-  if (invoice) {
-    const { data: links } = await supabase.from("mallpay_shop_owners").select("owner_id").eq("shop_id", invoice.shop_id);
+  // Everything else - cancelling queued reminders and sending the WhatsApp
+  // receipt - is a side-effect the collector shouldn't wait for. after()
+  // runs it in the background once the response has been sent, using the
+  // service-role client so it doesn't depend on the request's auth cookies.
+  after(async () => {
+    const admin = supabaseAdmin();
+    await cancelPendingReminders(invoiceId);
+    const { data: invoice } = await admin
+      .from("invoices").select("period,amount,shop_id,shops(shop_number)").eq("id", invoiceId).single();
+    if (!invoice) return;
+    const { data: links } = await admin.from("mallpay_shop_owners").select("owner_id").eq("shop_id", invoice.shop_id);
     const ownerIds = (links ?? []).map((l) => l.owner_id);
-    if (ownerIds.length > 0) {
-      const { data: owners } = await supabase
-        .from("profiles")
-        .select("whatsapp_number")
-        .in("id", ownerIds)
-        .eq("notify_whatsapp", true)
-        .not("whatsapp_number", "is", null);
-      const recipients = (owners ?? []).filter((o) => o.whatsapp_number);
-      if (recipients.length > 0) {
-        const shop = invoice.shops as unknown as { shop_number: string };
-        const { data: tmpl } = await supabase.from("mallpay_whatsapp_templates").select("body").eq("key", "payment_approved").single();
-        const message = renderTemplate(
-          tmpl?.body ?? "Your payment has been received and verified successfully. Shop {{shop_number}}, {{period_label}}, {{amount}}. Thank you.",
-          { shop_number: shop.shop_number, period_label: periodLabel(invoice.period), amount: money(invoice.amount) }
-        );
-        await supabase.from("mallpay_whatsapp_outbox").insert(
-          recipients.map((o) => ({
-            to_number: o.whatsapp_number as string,
-            message,
-            kind: "payment_approved" as const,
-            related_table: "invoices",
-            related_id: invoiceId,
-          }))
-        );
-      }
-    }
-  }
+    if (ownerIds.length === 0) return;
+    const { data: owners } = await admin
+      .from("profiles").select("whatsapp_number").in("id", ownerIds).eq("notify_whatsapp", true).not("whatsapp_number", "is", null);
+    const recipients = (owners ?? []).filter((o) => o.whatsapp_number);
+    if (recipients.length === 0) return;
+    const shop = invoice.shops as unknown as { shop_number: string };
+    const { data: tmpl } = await admin.from("mallpay_whatsapp_templates").select("body").eq("key", "payment_approved").single();
+    const message = renderTemplate(
+      tmpl?.body ?? "Your payment has been received and verified successfully. Shop {{shop_number}}, {{period_label}}, {{amount}}. Thank you.",
+      { shop_number: shop.shop_number, period_label: periodLabel(invoice.period), amount: money(invoice.amount) }
+    );
+    await admin.from("mallpay_whatsapp_outbox").insert(
+      recipients.map((o) => ({
+        to_number: o.whatsapp_number as string,
+        message,
+        kind: "payment_approved" as const,
+        related_table: "invoices",
+        related_id: invoiceId,
+      }))
+    );
+  });
 
   redirect("/collect?ok=1");
 }
