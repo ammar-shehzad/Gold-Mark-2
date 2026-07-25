@@ -17,6 +17,7 @@ import {
   UserIcon,
   ChatIcon,
   SheetIcon,
+  ExpenseIcon,
 } from "./icons";
 
 export type NavItem = {
@@ -29,6 +30,7 @@ const ADMIN_ITEMS: NavItem[] = [
   { href: "/", label: "Dashboard", icon: DashboardIcon },
   { href: "/shops", label: "Shops", icon: ShopIcon },
   { href: "/collect", label: "Collect", icon: CollectIcon },
+  { href: "/expenses", label: "Expenses", icon: ExpenseIcon },
   { href: "/payments", label: "Payments", icon: MoneyIcon },
   { href: "/owners", label: "Owners", icon: OwnersIcon },
   { href: "/complaints", label: "Complaints", icon: ComplaintIcon },
@@ -38,7 +40,10 @@ const ADMIN_ITEMS: NavItem[] = [
   { href: "/google-sheets", label: "Google Sheets", icon: SheetIcon },
   { href: "/setup", label: "Setup", icon: SetupIcon },
 ];
-const COLLECTOR_STAFF_ITEMS: NavItem[] = [{ href: "/collect", label: "Collect", icon: CollectIcon }];
+const COLLECTOR_STAFF_ITEMS: NavItem[] = [
+  { href: "/collector", label: "Today", icon: DashboardIcon },
+  { href: "/collect", label: "Collect", icon: CollectIcon },
+];
 const DEPARTMENT_STAFF_ITEMS: NavItem[] = [{ href: "/complaints", label: "Complaints", icon: ComplaintIcon }];
 const OWNER_ITEMS: NavItem[] = [
   { href: "/owner", label: "Invoices", icon: MoneyIcon },

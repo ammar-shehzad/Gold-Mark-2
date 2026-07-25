@@ -39,7 +39,7 @@ export default async function Dashboard({
   searchParams: Promise<{ period?: string }>;
 }) {
   const user = await requireUser();
-  if (user.role === "staff") redirect(user.staff_type === "department" ? "/complaints" : "/collect");
+  if (user.role === "staff") redirect(user.staff_type === "department" ? "/complaints" : "/collector");
   if (user.role === "owner") redirect("/owner");
 
   const sp = await searchParams;
@@ -52,13 +52,12 @@ export default async function Dashboard({
 
   const trendPeriods = lastPeriods(6);
 
-  const [{ data: invoices }, { count: shopCount }, { data: periods }, { data: arrearsRaw }, { data: trendRaw }] = await Promise.all([
+  const [{ data: invoices }, { count: shopCount }, { data: arrearsRaw }, { data: trendRaw }] = await Promise.all([
     supabase
       .from("invoices")
       .select("amount,status,paid_at,period,shops(shop_number,name,floors(name,sort)),profiles:collected_by(name)")
       .eq("period", period),
     supabase.from("shops").select("id", { count: "exact", head: true }).eq("active", true),
-    supabase.from("invoices").select("period").order("period", { ascending: false }),
     supabase
       .from("invoices")
       .select("amount,period,shops(shop_number,name)")
@@ -101,8 +100,6 @@ export default async function Dashboard({
     .sort((a, b) => (b.paid_at! > a.paid_at! ? 1 : -1))
     .slice(0, 8);
 
-  const uniqPeriods = [...new Set([currentPeriod(), ...(periods ?? []).map(p => p.period)])].sort().reverse();
-
   const trendMap = new Map<string, number>(trendPeriods.map(p => [p, 0]));
   for (const t of (trendRaw ?? []) as { amount: number; period: string }[]) {
     trendMap.set(t.period, (trendMap.get(t.period) ?? 0) + Number(t.amount));
@@ -113,11 +110,7 @@ export default async function Dashboard({
     <AppShell user={user} active="/">
       <div className="filters">
         <form method="get" className="filters" style={{ margin: 0 }} key={period}>
-          <select name="period" defaultValue={period}>
-            {uniqPeriods.map(p => (
-              <option key={p} value={p}>{periodLabel(p)}</option>
-            ))}
-          </select>
+          <input type="month" name="period" defaultValue={period} title="Pick any month — including a future month to see advance payments" />
           <button className="btn ghost" type="submit">View</button>
         </form>
         <Link className="btn ghost" href="/shops?new=1" style={{ marginLeft: "auto" }}>
@@ -228,10 +221,10 @@ export default async function Dashboard({
                 {recent.map((r, i) => (
                   <tr key={i}>
                     <td>
-                      {r.shops.shop_number} · {r.shops.name}
+                      <strong>{r.shops.shop_number}</strong> · {r.shops.name}
                       <div className="rowsub">
                         by {r.profiles?.name ?? "-"} ·{" "}
-                        {new Date(r.paid_at!).toLocaleDateString("en-US", { day: "numeric", month: "short" })}
+                        {new Date(r.paid_at!).toLocaleString("en-US", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" })}
                       </div>
                     </td>
                     <td className="r"><span className="badge paid num">{money(r.amount)}</span></td>
