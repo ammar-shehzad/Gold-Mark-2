@@ -20,13 +20,24 @@ create table if not exists public.mallpay_expenses (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+-- Salary payments link to the staff member they were paid to, and to the
+-- month they cover, so that staff member can see their own salary history.
+alter table public.mallpay_expenses add column if not exists paid_to uuid references public.profiles(id) on delete set null;
+alter table public.mallpay_expenses add column if not exists salary_period text; -- 'YYYY-MM' for salary rows
+
 create index if not exists idx_expenses_spent_on on public.mallpay_expenses(spent_on desc);
 create index if not exists idx_expenses_category on public.mallpay_expenses(category);
+create index if not exists idx_expenses_paid_to on public.mallpay_expenses(paid_to);
 
 alter table public.mallpay_expenses enable row level security;
+-- Admin: full control over every expense.
 drop policy if exists expenses_admin_all on public.mallpay_expenses;
 create policy expenses_admin_all on public.mallpay_expenses for all to authenticated
   using (public.my_role() = 'admin') with check (public.my_role() = 'admin');
+-- Staff: read-only, and ONLY their own salary rows (paid_to = themselves).
+drop policy if exists expenses_staff_own_salary on public.mallpay_expenses;
+create policy expenses_staff_own_salary on public.mallpay_expenses for select to authenticated
+  using (paid_to = auth.uid());
 
 -- ---------- 2. mallpay_collection_audit ----------
 -- One row per edit / undo / collect action on an invoice, so admins have a

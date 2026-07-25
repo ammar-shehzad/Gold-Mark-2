@@ -43,8 +43,12 @@ const ADMIN_ITEMS: NavItem[] = [
 const COLLECTOR_STAFF_ITEMS: NavItem[] = [
   { href: "/collector", label: "Today", icon: DashboardIcon },
   { href: "/collect", label: "Collect", icon: CollectIcon },
+  { href: "/my-salary", label: "My Salary", icon: MoneyIcon },
 ];
-const DEPARTMENT_STAFF_ITEMS: NavItem[] = [{ href: "/complaints", label: "Complaints", icon: ComplaintIcon }];
+const DEPARTMENT_STAFF_ITEMS: NavItem[] = [
+  { href: "/complaints", label: "Complaints", icon: ComplaintIcon },
+  { href: "/my-salary", label: "My Salary", icon: MoneyIcon },
+];
 const OWNER_ITEMS: NavItem[] = [
   { href: "/owner", label: "Invoices", icon: MoneyIcon },
   { href: "/owner/complaints", label: "Complaints", icon: ComplaintIcon },

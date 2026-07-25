@@ -147,13 +147,16 @@ type Inv = { id: number; shop_id: number; amount: number; status: string; paid_a
 export default async function CollectPage({
   searchParams,
 }: {
-  searchParams: Promise<{ period?: string; floor?: string; show?: string; q?: string; bulk?: string; edit?: string; ok?: string }>;
+  searchParams: Promise<{ period?: string; day?: string; floor?: string; show?: string; q?: string; bulk?: string; edit?: string; ok?: string }>;
 }) {
   const user = await requireStaff();
   if (user.role === "staff" && user.staff_type === "department") redirect("/complaints");
   const sp = await searchParams;
   const current = currentPeriod();
-  const period = /^\d{4}-\d{2}$/.test(sp.period ?? "") ? sp.period! : current;
+  // A specific day (YYYY-MM-DD) narrows the view to collections made ON that
+  // date; the month is derived from it. Otherwise the month picker drives it.
+  const day = /^\d{4}-\d{2}-\d{2}$/.test(sp.day ?? "") ? sp.day! : "";
+  const period = day ? day.slice(0, 7) : (/^\d{4}-\d{2}$/.test(sp.period ?? "") ? sp.period! : current);
   const supabase = await supabaseServer();
 
   // Ensure invoices exist for the current month always, and for the viewed
@@ -192,7 +195,8 @@ export default async function CollectPage({
     const n = sp.q.toLowerCase();
     rows = rows.filter((r) => r.shop.shop_number.toLowerCase().includes(n) || r.shop.name.toLowerCase().includes(n));
   }
-  if (show === "pending") rows = rows.filter((r) => !r.paid);
+  if (day) rows = rows.filter((r) => r.paid && r.inv?.paid_at?.slice(0, 10) === day);
+  else if (show === "pending") rows = rows.filter((r) => !r.paid);
   else if (show === "paid") rows = rows.filter((r) => r.paid);
 
   const paidCount = shops.filter((s) => invByShop.get(s.id)?.status === "paid").length;
@@ -202,7 +206,9 @@ export default async function CollectPage({
   }, 0);
   const isFuture = period > current;
 
-  const pendingForBulk = rows.filter((r) => !r.paid).map((r) => ({ shop_id: r.shop.id, shop_number: r.shop.shop_number, name: r.shop.name }));
+  const pendingForBulk = rows
+    .filter((r) => !r.paid)
+    .map((r) => ({ shop_id: r.shop.id, shop_number: r.shop.shop_number, name: r.shop.name, floor: r.shop.floors.name, amount: Number(r.inv?.amount ?? r.shop.custom_fee) }));
 
   const editRow = sp.edit ? rows.find((r) => r.inv?.id === Number(sp.edit)) : undefined;
 
@@ -221,14 +227,17 @@ export default async function CollectPage({
         <div className="kpi"><div className="kpi-body"><div className="kpi-label">View</div><div className="kpi-value" style={{ fontSize: 15 }}>{isFuture ? "Future (advance)" : period === current ? "Current month" : "Past month"}</div></div></div>
       </div>
 
-      <div className="filters" style={{ marginTop: 6 }}>
-        <form method="get" className="filters" style={{ margin: 0 }} key={`${period}-${floorId}-${show}-${sp.q ?? ""}`}>
-          <input type="month" name="period" defaultValue={period} title="Pick any month — past, current, or a future month for advance payments" />
-          <select name="show" defaultValue={show}>
-            <option value="pending">Pending only</option>
-            <option value="paid">Paid only</option>
-            <option value="all">All shops</option>
-          </select>
+      <div className="filters" style={{ marginTop: 6, alignItems: "flex-end" }}>
+        <form method="get" className="filters" style={{ margin: 0, alignItems: "flex-end" }} key={`${period}-${day}-${floorId}-${show}-${sp.q ?? ""}`}>
+          <span className="filter-field"><label>Month</label><input type="month" name="period" defaultValue={period} title="Any month — past, current, or future (advance)" /></span>
+          <span className="filter-field"><label>Or a specific day</label><input type="date" name="day" defaultValue={day} title="Show only collections made on this date" /></span>
+          {!day && (
+            <select name="show" defaultValue={show}>
+              <option value="pending">Pending only</option>
+              <option value="paid">Paid only</option>
+              <option value="all">All shops</option>
+            </select>
+          )}
           <select name="floor" defaultValue={floorId ? String(floorId) : ""}>
             <option value="">All floors</option>
             {(floors ?? []).map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}
@@ -242,6 +251,7 @@ export default async function CollectPage({
           <a className="btn" href={`/collect?period=${period}&bulk=1`} style={{ marginLeft: "auto" }}>Bulk Collection</a>
         )}
       </div>
+      {day && <p className="muted" style={{ marginTop: -4 }}>Showing collections made on {new Date(day + "T12:00:00").toLocaleDateString("en-US", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}.</p>}
 
       {bulk ? (
         <BulkCollectPanel shops={pendingForBulk} period={period} periodLabel={periodLabel(period)} action={bulkCollect} />
