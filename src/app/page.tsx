@@ -34,6 +34,12 @@ function shortMonth(p: string): string {
   return new Date(y, m - 1, 1).toLocaleDateString("en-US", { month: "short" });
 }
 
+function nextPeriod(p: string): string {
+  const [year, month] = p.split("-").map(Number);
+  const next = new Date(Date.UTC(year, month, 1));
+  return `${next.getUTCFullYear()}-${String(next.getUTCMonth() + 1).padStart(2, "0")}`;
+}
+
 export default async function Dashboard({
   searchParams,
 }: {
@@ -65,10 +71,17 @@ export default async function Dashboard({
     supabase.from("shops").select("id", { count: "exact", head: true }).eq("active", true),
     supabase
       .from("invoices")
-      .select("amount,period,shops(shop_number,name)")
+      .select("amount,period,shops!inner(shop_number,name,active)")
       .eq("status", "unpaid")
+      .eq("shops.active", true)
       .lt("period", currentPeriod()),
-    supabase.from("invoices").select("amount,period").in("period", trendPeriods),
+    supabase
+      .from("invoices")
+      .select("amount,paid_at")
+      .eq("status", "paid")
+      .not("paid_at", "is", null)
+      .gte("paid_at", `${trendPeriods[0]}-01T00:00:00`)
+      .lt("paid_at", `${nextPeriod(trendPeriods[trendPeriods.length - 1])}-01T00:00:00`),
     // expenses spent within the viewed month (for the net figure)
     supabase.from("mallpay_expenses").select("amount,spent_on").gte("spent_on", `${period}-01`).lte("spent_on", `${period}-31`),
     // latest expense records for the "Recent expenses" widget
@@ -120,8 +133,12 @@ export default async function Dashboard({
     .slice(0, 8);
 
   const trendMap = new Map<string, number>(trendPeriods.map(p => [p, 0]));
-  for (const t of (trendRaw ?? []) as { amount: number; period: string }[]) {
-    trendMap.set(t.period, (trendMap.get(t.period) ?? 0) + Number(t.amount));
+  for (const t of (trendRaw ?? []) as { amount: number; paid_at: string | null }[]) {
+    if (!t.paid_at) continue;
+    const collectionMonth = t.paid_at.slice(0, 7);
+    if (trendMap.has(collectionMonth)) {
+      trendMap.set(collectionMonth, (trendMap.get(collectionMonth) ?? 0) + Number(t.amount));
+    }
   }
   const trendPoints = trendPeriods.map(p => ({ label: shortMonth(p), value: trendMap.get(p) ?? 0 }));
 
@@ -133,9 +150,6 @@ export default async function Dashboard({
           <button className="btn ghost" type="submit">View</button>
         </form>
         {day && <Link className="btn ghost" href="/">Clear day</Link>}
-        <Link className="btn ghost" href="/shops?new=1" style={{ marginLeft: "auto" }}>
-          + Register shop
-        </Link>
       </div>
 
       {day && (

@@ -3,6 +3,7 @@ import { supabaseServer } from "@/lib/supabase/server";
 import type { Profile } from "@/lib/auth";
 import { SearchIcon, LogoutIcon } from "./icons";
 import ThemeToggle from "./ThemeToggle";
+import PasskeyEnrollment from "./PasskeyEnrollment";
 
 async function signOut() {
   "use server";
@@ -20,6 +21,7 @@ export default function Topbar({ user, title }: { user: Profile; title: string }
         <input type="text" name="q" placeholder="Search shops, owners…" />
       </form>
       <div className="topbar-actions">
+        <PasskeyEnrollment />
         <ThemeToggle />
         <div className="topbar-user">
           <span className="topbar-avatar" aria-hidden="true">{user.name.charAt(0).toUpperCase()}</span>

@@ -114,6 +114,8 @@ input:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(-
 .login{max-width:380px;margin:9vh auto 0;padding:0 16px}
 .login .mark{width:44px;height:44px;font-size:21px;border-radius:11px;margin:0 auto 10px}
 .login-head{text-align:center;margin-bottom:18px}
+.login-divider{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px;margin:14px 0}
+.login-divider::before,.login-divider::after{content:"";height:1px;flex:1;background:var(--line)}
 .foot{padding:26px 16px 30px;font-size:12.5px;text-align:center}
 .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;position:relative;
   box-shadow:inset -10px 0 8px -8px rgba(20,25,50,.12)}
@@ -162,6 +164,16 @@ input:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(-
   .filters form{width:100%}
   .filters input[type=text]{flex:1;min-width:0}
   .filters select{min-width:0;flex:1}
+  .collect-filters{display:block}
+  .collect-filters form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .collect-filters .filter-field,.collect-filters .filter-field input,.collect-filters .filter-field select{
+    width:100%;min-width:0}
+  .collect-filters form > .btn{width:100%;align-self:end}
+  .collect-filters > .btn{display:block;width:100%;margin:10px 0 0!important;text-align:center}
+}
+
+@media (max-width:430px){
+  .collect-filters form{grid-template-columns:minmax(0,1fr)}
 }
 
 /* ---- app shell ---- */
@@ -211,6 +223,7 @@ input:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(-
   .topbar-avatar{display:inline-flex}
   .logout-btn{padding:8px;border-radius:50%}
   .logout-btn-label{display:none}
+  .passkey-enroll{font-size:11px;padding:7px 9px}
   .page{padding:14px 14px calc(78px + env(safe-area-inset-bottom))}
   .bottom-nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:10;
     background:var(--card);border-top:1px solid var(--line);

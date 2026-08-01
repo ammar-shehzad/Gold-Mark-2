@@ -47,6 +47,21 @@ export default function LoginPage() {
     router.refresh();
   }
 
+  async function signInWithFingerprint() {
+    setBusy(true);
+    setErr(null);
+    const { error } = await supabaseBrowser().auth.signInWithPasskey();
+    if (error) {
+      setErr(error.message.includes("disabled")
+        ? "Fingerprint login is not enabled for this app yet."
+        : "Fingerprint/passkey login was cancelled or is not registered on this device.");
+      setBusy(false);
+      return;
+    }
+    router.push("/");
+    router.refresh();
+  }
+
   return (
     <div className="login">
       <div className="login-head">
@@ -69,6 +84,10 @@ export default function LoginPage() {
             {busy ? "Signing in…" : "Log in"}
           </button>
         </form>
+        <div className="login-divider"><span>or</span></div>
+        <button type="button" className="btn ghost" style={{ width: "100%" }} disabled={busy} onClick={signInWithFingerprint}>
+          Use fingerprint / passkey
+        </button>
       </div>
     </div>
   );

@@ -160,11 +160,11 @@ export default async function CollectPage({
   const period = day ? day.slice(0, 7) : (/^\d{4}-\d{2}$/.test(sp.period ?? "") ? sp.period! : current);
   const supabase = await supabaseServer();
 
-  // Ensure invoices exist for the current month always, and for the viewed
-  // month when it's not in the future (past/current). Future months stay
-  // sparse - an invoice only appears there once an advance payment is made.
+  // Generate the current month's normal invoices. Do not backfill an entire
+  // past month merely because somebody views it: that manufactured arrears
+  // for every currently active shop. A missing past/future invoice is created
+  // only when its payment is actually recorded (findOrCreateInvoice above).
   await supabase.rpc("ensure_invoices", { p_period: current });
-  if (period < current) await supabase.rpc("ensure_invoices", { p_period: period });
 
   const show = ["all", "pending", "paid"].includes(sp.show ?? "") ? sp.show! : "pending";
   const floorId = sp.floor ? Number(sp.floor) : 0;
@@ -228,19 +228,28 @@ export default async function CollectPage({
         <div className="kpi"><div className="kpi-body"><div className="kpi-label">View</div><div className="kpi-value" style={{ fontSize: 15 }}>{isFuture ? "Future (advance)" : period === current ? "Current month" : "Past month"}</div></div></div>
       </div>
 
-      <div className="filters" style={{ marginTop: 6, alignItems: "flex-end" }}>
+      <div className="filters collect-filters" style={{ marginTop: 6, alignItems: "flex-end" }}>
         <form method="get" className="filters" style={{ margin: 0, alignItems: "flex-end" }} key={`${period}-${day}-${floorId}-${show}-${sp.q ?? ""}`}>
           <MonthDayFilter period={period} day={day} />
-          <select name="show" defaultValue={show} disabled={!!day} title={day ? "Cleared while a specific day is selected" : undefined}>
-            <option value="pending">Pending only</option>
-            <option value="paid">Paid only</option>
-            <option value="all">All shops</option>
-          </select>
-          <select name="floor" defaultValue={floorId ? String(floorId) : ""}>
-            <option value="">All floors</option>
-            {(floors ?? []).map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}
-          </select>
-          <input type="text" name="q" defaultValue={sp.q ?? ""} placeholder="Shop number or name" />
+          <span className="filter-field">
+            <label>Status</label>
+            <select name="show" defaultValue={show} disabled={!!day} title={day ? "Cleared while a specific day is selected" : undefined}>
+              <option value="pending">Pending only</option>
+              <option value="paid">Paid only</option>
+              <option value="all">All shops</option>
+            </select>
+          </span>
+          <span className="filter-field">
+            <label>Floor</label>
+            <select name="floor" defaultValue={floorId ? String(floorId) : ""}>
+              <option value="">All floors</option>
+              {(floors ?? []).map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}
+            </select>
+          </span>
+          <span className="filter-field filter-search">
+            <label>Shop</label>
+            <input type="text" name="q" defaultValue={sp.q ?? ""} placeholder="Number or name" />
+          </span>
           <button className="btn ghost" type="submit">View</button>
         </form>
         {bulk ? (

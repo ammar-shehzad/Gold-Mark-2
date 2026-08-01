@@ -231,11 +231,16 @@ export default async function ExpensesPage({
           <p className="muted">No expenses match this view.</p>
         ) : (
           <div className="tablewrap"><table>
-            <thead><tr><th>Date</th><th>Actions</th><th>Category</th><th>Description</th><th className="r">Amount</th><th>Added by</th></tr></thead>
+            <thead><tr><th>Description / paid to</th><th className="r">Amount</th><th>Actions</th><th>Category</th><th>Date</th><th>Added by</th></tr></thead>
             <tbody>
               {rows.map((r) => (
                 <tr key={r.id}>
-                  <td className="num">{r.spent_on}</td>
+                  <td>
+                    <strong>{r.profiles_paid?.name ?? r.description}</strong>
+                    {r.profiles_paid && <div className="rowsub">{r.description}{r.salary_period ? ` · ${periodLabel(r.salary_period)}` : ""}</div>}
+                    {r.notes && <div className="rowsub">{r.notes}</div>}
+                  </td>
+                  <td className="r num"><strong>{money(r.amount)}</strong></td>
                   <td>
                     <span className="row-actions">
                       <a className="btn ghost small" href={`/expenses?edit=${r.id}`}>Edit</a>
@@ -247,10 +252,8 @@ export default async function ExpensesPage({
                   </td>
                   <td>
                     {r.category === "Staff Salaries" ? <span className="badge paid">Salary</span> : r.category}
-                    {r.profiles_paid && <div className="rowsub">to {r.profiles_paid.name}{r.salary_period ? ` · ${periodLabel(r.salary_period)}` : ""}</div>}
                   </td>
-                  <td>{r.description}{r.notes && <div className="rowsub">{r.notes}</div>}</td>
-                  <td className="r num">{money(r.amount)}</td>
+                  <td className="num">{r.spent_on}</td>
                   <td>{r.profiles_added?.name ?? "-"}</td>
                 </tr>
               ))}
